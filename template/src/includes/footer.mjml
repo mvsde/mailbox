@@ -1,0 +1,18 @@
+<mj-section>
+  <mj-column>
+
+    <mj-text>
+      <h2>Mail Box</h2>
+      <p>Small wrapper around MJML and Nodemailer for (awesome) HTML emails.</p>
+    </mj-text>
+
+  </mj-column>
+  <mj-column>
+
+    <mj-text>
+      <a href="https://github.com/mvsde/mailbox">GitHub</a><br>
+      <a href="https://npmjs.com/package/mailbox">npm</a>
+    </mj-text>
+
+  </mj-column>
+</mj-section>

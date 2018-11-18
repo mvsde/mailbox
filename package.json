@@ -1,0 +1,50 @@
+{
+  "name": "@mvsde/mailbox",
+  "version": "0.1.0",
+  "description": "Small wrapper around MJML and Nodemailer for (awesome) HTML emails",
+  "scripts": {
+    "lint": "eslint .",
+    "test:create": "node bin/mailbox create test/create",
+    "test:dev": "cd template && node ../bin/mailbox dev",
+    "test:build": "cd template && node ../bin/mailbox build",
+    "test:test": "cd template && node ../bin/mailbox test",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mvsde/mailbox.git"
+  },
+  "keywords": [
+    "email",
+    "html",
+    "mjml",
+    "nodemailer",
+    "nunjucks"
+  ],
+  "author": "Fynn Becker <info@fynn-becker.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mvsde/mailbox/issues"
+  },
+  "homepage": "https://github.com/mvsde/mailbox#readme",
+  "bin": "bin/mailbox.js",
+  "dependencies": {
+    "chokidar": "^2.0.4",
+    "express": "^4.16.4",
+    "fs-extra": "^7.0.1",
+    "mjml": "^4.2.0",
+    "nodemailer": "^4.6.8",
+    "nunjucks": "^3.1.4",
+    "ws": "^6.1.2",
+    "yargs": "^12.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "standard-version": "^4.4.0"
+  }
+}
