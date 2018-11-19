@@ -40,6 +40,8 @@ async function dev (options) {
 
   const socketScript = generateWebSocketScript({ port: socketPort })
 
+  server.use(express.static('src/attachments'))
+
   server.get('/', (request, response) => {
     const mjmlOutput = renderMJML({ path: options.templatePath })
 

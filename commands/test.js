@@ -1,3 +1,4 @@
+const generateAttachments = require('../lib/generate-attachments')
 const getTestData = require('../lib/get-test-data')
 const renderMJML = require('../lib/render-mjml')
 const renderNunjucks = require('../lib/render-nunjucks')
@@ -20,16 +21,32 @@ function test (options) {
     process.exit(1)
   }
 
+  const nunjucksAttachments = {}
+
+  for (let attachment in testData.attachments) {
+    nunjucksAttachments[attachment] = `cid:${attachment}@example.com`
+  }
+
   const nunjucksOutput = renderNunjucks({
     template: mjmlOutput.html,
-    context: testData
+    context: {
+      ...testData,
+      attachments: nunjucksAttachments
+    }
   })
+
+  const mailAttachments = generateAttachments({
+    attachments: testData.attachments
+  })
+
+  console.log(mailAttachments)
 
   sendMail({
     from: options.from,
     to: options.to,
     subject: testData.subject,
-    html: nunjucksOutput
+    html: nunjucksOutput,
+    attachments: mailAttachments
   })
 }
 

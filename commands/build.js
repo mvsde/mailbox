@@ -1,4 +1,5 @@
 const fs = require('fs-extra')
+const path = require('path')
 const renderMJML = require('../lib/render-mjml')
 
 /**
@@ -17,6 +18,7 @@ function build (options) {
 
   fs.ensureFileSync(options.outputPath)
   fs.writeFileSync(options.outputPath, render.html)
+  fs.copySync(path.join(process.cwd(), 'src/attachments'), path.dirname(options.outputPath))
 }
 
 module.exports = build

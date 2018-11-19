@@ -4,10 +4,10 @@
     <mj-image
       align="left"
       alt="Mail Box Logo"
-      height="56px"
+      height="48px"
       href="https://github.com/mvsde/mailbox"
-      src="{{ logo }}"
-      width="300px"
+      src="{{ attachments.logo }}"
+      width="48px"
     />
 
   </mj-column>
