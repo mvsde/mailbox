@@ -11,7 +11,7 @@
 
     <mj-text>
       <a href="https://github.com/mvsde/mailbox">GitHub</a><br>
-      <a href="https://npmjs.com/package/mailbox">npm</a>
+      <a href="https://www.npmjs.com/package/@mvsde/mailbox">npm</a>
     </mj-text>
 
   </mj-column>
