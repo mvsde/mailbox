@@ -71,13 +71,18 @@ const dev = {
         default: 'default',
         type: 'string'
       })
+      .options('test', {
+        describe: 'Optional test data',
+        requiresArg: true,
+        type: 'string'
+      })
   },
   handler (argv) {
     process.env.NODE_ENV = 'development'
 
     const templatePath = generateTemplatePath(argv.layout)
 
-    require('../commands/dev')({ templatePath })
+    require('../commands/dev')({ templatePath, test: argv.test })
   }
 }
 
@@ -89,6 +94,12 @@ const test = {
       .positional('layout', {
         describe: 'Email layout',
         default: 'default',
+        type: 'string'
+      })
+      .options('test', {
+        describe: 'Test data',
+        default: 'default',
+        requiresArg: true,
         type: 'string'
       })
       .options('from', {
@@ -111,6 +122,7 @@ const test = {
 
     require('../commands/test')({
       templatePath,
+      test: argv.test,
       from: argv.from,
       to: argv.to
     })
