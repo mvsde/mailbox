@@ -1,3 +1,5 @@
+const consola = require('consola')
+const formatMailSuccess = require('../lib/format-mail-success')
 const generateAttachments = require('../lib/generate-attachments')
 const getTestData = require('../lib/get-test-data')
 const renderMJML = require('../lib/render-mjml')
@@ -13,13 +15,17 @@ const sendMail = require('../lib/send-mail')
  * @param {String} options.to Email recipient
  */
 function test (options) {
+  consola.info('Rendering MJML…')
+
   const testData = getTestData({ test: options.test })
   const mjmlOutput = renderMJML({ path: options.templatePath })
 
   if (mjmlOutput.errors.length) {
-    console.log(mjmlOutput.errors)
+    consola.error(mjmlOutput.errors)
     process.exit(1)
   }
+
+  consola.success('MJML rendered.')
 
   const nunjucksAttachments = {}
 
@@ -39,7 +45,7 @@ function test (options) {
     attachments: testData.attachments
   })
 
-  console.log(mailAttachments)
+  consola.info('Sending email…')
 
   sendMail({
     from: options.from,
@@ -47,6 +53,13 @@ function test (options) {
     subject: testData.subject,
     html: nunjucksOutput,
     attachments: mailAttachments
+  }, (error, info) => {
+    if (error) {
+      consola.error(error.message)
+      process.exit(1)
+    }
+
+    consola.success(formatMailSuccess({ info }))
   })
 }
 

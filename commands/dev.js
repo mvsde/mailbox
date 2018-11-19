@@ -1,4 +1,5 @@
 const chokidar = require('chokidar')
+const consola = require('consola')
 const express = require('express')
 const generateWebSocketScript = require('../lib/generate-weboscket-script')
 const getPort = require('../lib/get-port')
@@ -46,7 +47,7 @@ async function dev (options) {
     const mjmlOutput = renderMJML({ path: options.templatePath })
 
     if (mjmlOutput.errors.length) {
-      console.log(mjmlOutput.errors)
+      consola.error(mjmlOutput.errors)
       response.status(500).end()
       return
     }
@@ -71,7 +72,7 @@ async function dev (options) {
 
   server.listen(serverPort)
 
-  console.log(`Server running at http://localhost:${serverPort}`)
+  consola.info(`Server running at http://localhost:${serverPort}`)
 
   chokidar
     .watch(['src/**/*.mjml', 'test/*.json'], { ignoreInitial: true })

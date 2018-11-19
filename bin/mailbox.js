@@ -116,7 +116,7 @@ const test = {
       })
   },
   handler (argv) {
-    process.env.NODE_ENV = 'test'
+    process.env.NODE_ENV = 'development'
 
     const templatePath = generateTemplatePath(argv.layout)
 

@@ -1,3 +1,4 @@
+const consola = require('consola')
 const fs = require('fs-extra')
 const path = require('path')
 const renderMJML = require('../lib/render-mjml')
@@ -9,16 +10,29 @@ const renderMJML = require('../lib/render-mjml')
  * @param {String} options.outputPath Path for HTML output
  */
 function build (options) {
+  consola.info('Rendering MJML…')
+
   const render = renderMJML({ path: options.templatePath })
 
   if (render.errors.length) {
-    console.log(render.errors)
+    consola.error(render.errors)
     process.exit(1)
   }
 
-  fs.ensureFileSync(options.outputPath)
-  fs.writeFileSync(options.outputPath, render.html)
-  fs.copySync(path.join(process.cwd(), 'src/attachments'), path.dirname(options.outputPath))
+  consola.success('MJML rendered.')
+
+  consola.info('Writing HTML file and copying attachments…')
+
+  try {
+    fs.ensureFileSync(options.outputPath)
+    fs.writeFileSync(options.outputPath, render.html)
+    fs.copySync(path.join(process.cwd(), 'src/attachments'), path.dirname(options.outputPath))
+  } catch (error) {
+    consola.error(error.message)
+    process.exit(1)
+  }
+
+  consola.success('HTML written and attachments copied.')
 }
 
 module.exports = build
