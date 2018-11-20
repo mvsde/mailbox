@@ -10,7 +10,7 @@ const renderNunjucks = require('../lib/render-nunjucks')
 const WebSocket = require('ws')
 
 /**
- * Start dev server with hot reload
+ * Start dev server with auto-reload
  * @param {Object} options Function options
  * @param {Number} [options.port=3000] Server port
  * @param {String} options.templatePath Path of MJML template

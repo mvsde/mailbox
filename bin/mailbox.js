@@ -63,7 +63,7 @@ const create = {
 
 const dev = {
   command: 'dev [layout]',
-  desc: 'Start dev server with hot reload',
+  desc: 'Start dev server with auto-reload',
   builder (yargs) {
     yargs
       .positional('layout', {
