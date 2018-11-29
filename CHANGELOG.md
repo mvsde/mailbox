@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/mvsde/mailbox/compare/v0.2.1...v0.2.2) (2018-11-29)
+
+
+### Bug Fixes
+
+* **license:** Add missing license file ([e8ef7d6](https://github.com/mvsde/mailbox/commit/e8ef7d6))
+* **MJML:** Import correct render function (again) ([280c16f](https://github.com/mvsde/mailbox/commit/280c16f))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/mvsde/mailbox/compare/v0.2.0...v0.2.1) (2018-11-19)
 
