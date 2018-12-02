@@ -1,7 +1,7 @@
 const consola = require('consola')
 const formatMailSuccess = require('../lib/format-mail-success')
 const generateAttachments = require('../lib/generate-attachments')
-const getTestData = require('../lib/get-test-data')
+const getData = require('../lib/get-data')
 const renderMJML = require('../lib/render-mjml')
 const renderNunjucks = require('../lib/render-nunjucks')
 const sendMail = require('../lib/send-mail')
@@ -10,14 +10,14 @@ const sendMail = require('../lib/send-mail')
  * Send test email
  * @param {Object} options Function options
  * @param {String} options.templatePath Path of MJML template
- * @param {String} options.test Test data
+ * @param {string} options.data Email data
  * @param {String} options.from Email sender
  * @param {String} options.to Email recipient
  */
 function test (options) {
   consola.info('Rendering MJML…')
 
-  const testData = getTestData({ test: options.test })
+  const data = getData({ data: options.data })
   const mjmlOutput = renderMJML({ path: options.templatePath })
 
   if (mjmlOutput.errors.length) {
@@ -29,20 +29,20 @@ function test (options) {
 
   const nunjucksAttachments = {}
 
-  for (let attachment in testData.attachments) {
+  for (let attachment in data.attachments) {
     nunjucksAttachments[attachment] = `cid:${attachment}@example.com`
   }
 
   const nunjucksOutput = renderNunjucks({
     template: mjmlOutput.html,
     context: {
-      ...testData,
+      ...data,
       attachments: nunjucksAttachments
     }
   })
 
   const mailAttachments = generateAttachments({
-    attachments: testData.attachments
+    attachments: data.attachments
   })
 
   consola.info('Sending email…')
@@ -50,7 +50,7 @@ function test (options) {
   sendMail({
     from: options.from,
     to: options.to,
-    subject: testData.subject,
+    subject: data.subject,
     html: nunjucksOutput,
     attachments: mailAttachments
   }, (error, info) => {

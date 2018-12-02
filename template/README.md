@@ -1,5 +1,7 @@
 # Email Template
 
+The full documentation is available on [GitHub](https://github.com/mvsde/mailbox#readme).
+
 
 ## Installation
 

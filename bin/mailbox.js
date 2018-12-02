@@ -1,9 +1,20 @@
 #!/usr/bin/env node
 
+/**
+ * Generate path to template
+ * @param {String} layout Layout name
+ * @returns {String} Path to template file
+ */
 function generateTemplatePath (layout) {
   return `src/layouts/${layout}.mjml`
 }
 
+/**
+ * Generate path to output
+ * @param {String} output Specific output path
+ * @param {String} layout Layout name for fallback path
+ * @returns {String} Path to output file
+ */
 function generateOutputPath (output, layout) {
   return output || `dist/${layout}.html`
 }
@@ -31,7 +42,10 @@ const build = {
     const templatePath = generateTemplatePath(argv.layout)
     const outputPath = generateOutputPath(argv.output, argv.layout)
 
-    require('../commands/build')({ templatePath, outputPath })
+    require('../commands/build')({
+      templatePath,
+      outputPath
+    })
   }
 }
 
@@ -71,8 +85,8 @@ const dev = {
         default: 'default',
         type: 'string'
       })
-      .options('test', {
-        describe: 'Optional test data',
+      .options('data', {
+        describe: 'Email data',
         requiresArg: true,
         type: 'string'
       })
@@ -82,7 +96,10 @@ const dev = {
 
     const templatePath = generateTemplatePath(argv.layout)
 
-    require('../commands/dev')({ templatePath, test: argv.test })
+    require('../commands/dev')({
+      templatePath,
+      data: argv.data
+    })
   }
 }
 
@@ -96,8 +113,8 @@ const test = {
         default: 'default',
         type: 'string'
       })
-      .options('test', {
-        describe: 'Test data',
+      .options('data', {
+        describe: 'Email data',
         default: 'default',
         requiresArg: true,
         type: 'string'
@@ -122,7 +139,7 @@ const test = {
 
     require('../commands/test')({
       templatePath,
-      test: argv.test,
+      data: argv.data,
       from: argv.from,
       to: argv.to
     })

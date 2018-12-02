@@ -2,8 +2,8 @@ const chokidar = require('chokidar')
 const consola = require('consola')
 const express = require('express')
 const generateWebSocketScript = require('../lib/generate-weboscket-script')
+const getData = require('../lib/get-data')
 const getPort = require('../lib/get-port')
-const getTestData = require('../lib/get-test-data')
 const injectScript = require('../lib/inject-script')
 const renderMJML = require('../lib/render-mjml')
 const renderNunjucks = require('../lib/render-nunjucks')
@@ -14,7 +14,7 @@ const WebSocket = require('ws')
  * @param {Object} options Function options
  * @param {Number} [options.port=3000] Server port
  * @param {String} options.templatePath Path of MJML template
- * @param {String} [options.test] Optional test data
+ * @param {String} [options.data] Optional email data
  */
 async function dev (options) {
   if (!options.templatePath) {
@@ -29,8 +29,8 @@ async function dev (options) {
     throw new TypeError('options.port must be of type number')
   }
 
-  if (options.test && typeof options.test !== 'string') {
-    throw new TypeError('options.test must be of type string')
+  if (options.data && typeof options.data !== 'string') {
+    throw new TypeError('options.data must be of type string')
   }
 
   const serverPort = await getPort(options.port || 3000)
@@ -57,14 +57,14 @@ async function dev (options) {
       script: socketScript
     })
 
-    if (!options.test) {
+    if (!options.data) {
       return response.send(injectOutput)
     }
 
-    const testData = getTestData({ test: options.test })
+    const data = getData({ data: options.data })
     const nunjucksOutput = renderNunjucks({
       template: injectOutput,
-      context: testData
+      context: data
     })
 
     response.send(nunjucksOutput)
@@ -75,7 +75,7 @@ async function dev (options) {
   consola.info(`Server running at http://localhost:${serverPort}`)
 
   chokidar
-    .watch(['src/**/*.mjml', 'test/*.json'], { ignoreInitial: true })
+    .watch(['src/**/*.mjml', 'data/*.json'], { ignoreInitial: true })
     .on('all', () => {
       socket.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
