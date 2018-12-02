@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/mvsde/mailbox/compare/v0.2.2...v0.3.0) (2018-12-02)
+
+
+### Bug Fixes
+
+* Improve error logging ([ae535c5](https://github.com/mvsde/mailbox/commit/ae535c5))
+
+
+### Features
+
+* Implement more dynamic email data system ([118443a](https://github.com/mvsde/mailbox/commit/118443a))
+
+
+### BREAKING CHANGES
+
+* This replaces the previous `--test` flag with `--data`. This accepts not only a single value, but also a comma-separated list.
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/mvsde/mailbox/compare/v0.2.1...v0.2.2) (2018-11-29)
 
