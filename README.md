@@ -64,15 +64,15 @@ The `src/includes`-folder is optional, it can be renamed or removed altogether. 
 
 ### Attachments
 
-Files in the folder `src/attachments` can be referenced in a test setup. Nodemailer attaches these to the mail and provides a `cid` so images can be loaded from the attachments. The contents of the attachment folder will be copied as-is to the output during build time.
+Files in the folder `src/attachments` can be referenced in a data specification. Nodemailer attaches these to the mail and provides a `cid` so images can be loaded from the attachments. The contents of the attachment folder will be copied as-is to the output during build time.
 
-### Tests
+### Data
 
-The `tests` folder has to contain at least a `default.json` file which serves as the base test setup. You can create more JSON test files, but they always need a `default.json` to extend.
+The `data` folder has to contain at least a `default.json` file which serves as the base data specification. You can create more JSON data files, but they always need a `default.json` to extend.
 
-The test file content is passed to Nunjucks as a context. This allows the use of [Nunjucks templating features](https://mozilla.github.io/nunjucks/templating.html) to enhance the development and testing phase.
+The data file content is passed to Nunjucks as a context. This allows the use of [Nunjucks templating features](https://mozilla.github.io/nunjucks/templating.html) to enhance the development and testing phase.
 
-The special `attachments`-key in a test file will be transformed to allow static file linking during development and `cid`-attachment linking in test emails.
+The special `attachments`-key in a data file will be transformed to allow static file linking during development and `cid`-attachment linking in test emails.
 
 ```json
 {
@@ -95,11 +95,15 @@ mailbox dev
 # Optional alternative layout
 mailbox dev [layout]
 
-# Optional test data
-mailbox dev --test <test-data>
+# Optional email data
+mailbox dev --data <data-spec,...>
 ```
 
-The layout defaults to `default` (the `src/layouts/default.mjml` file). The Nunjucks context isn't populated with test data by default. You can specifiy test data with `--test default`.
+The layout defaults to `default` (the `src/layouts/default.mjml` file). The Nunjucks context isn't populated with data by default.
+
+You can specifiy one or more data files with `--data file1,file2,...`. The list will always be prepended with the default data file. The files will be merged from right into left.
+
+**NOTE:** You don't need to specify the full path for data files. The file name without extension is sufficient.
 
 
 ## Test
@@ -115,13 +119,17 @@ mailbox test [layout] --to <email-address>
 # Optional sender address
 mailbox test --to <email-address> --from <email-address>
 
-# Optional alternative test data
-mailbox test --to <email-address> --test <test-data>
+# Optional alternative email data
+mailbox test --to <email-address> --data <data-spec,...>
 ```
 
-Both layout and test default to `default` (the `src/layouts/default.mjml` and `test/default.json` files). A recipient email address has to be specified with `--to info@example.com`, the sender email is optional and defaults to `test@example.com`. Test data other than default can be specified with `--test another-test`.
+Both layout and data default to `default` (the `src/layouts/default.mjml` and `data/default.json` files). A recipient email address has to be specified with `--to info@example.com`, the sender email is optional and defaults to `test@example.com`.
 
-Note: For now, `sendmail` is required for the tests to work. In the future the Nodemailer transporter will be configurable. This will enable sending via SMTP.
+Email data other than default can be specified with `--data file1,file2,...`. The list will always be prepended with the default data file. The files will be merged from right into left.
+
+**NOTE:** You don't need to specify the full path for data files. The file name without extension is sufficient.
+
+**NOTE:** For now, `sendmail` is required for the tests to work. In the future the Nodemailer transporter will be configurable. This will enable sending via SMTP.
 
 
 ## Build
