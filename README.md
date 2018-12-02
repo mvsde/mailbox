@@ -50,11 +50,11 @@ The MJML documentation provides a short [description for all available options](
 
 ### Layouts
 
-The file `src/layouts/default.mjml` serves as a base layout for an HTML email. It uses  [MJML (Mailjet Markup Language)](https://mjml.io/documentation/) for simpler email markup.
+The file `src/layouts/default.mjml` serves as a base layout for an HTML email. It uses [MJML (Mailjet Markup Language)](https://mjml.io/documentation/) for simpler email markup.
 
 ### Includes
 
-The `src/includes`-folder is optional, it can be renamed or removed altogether. The idea behind this folder is to have one location for reusable chunks of markup. With [`<mj-include>`](https://mjml.io/documentation/#mj-include) they can be included in layouts or other includes.
+The `src/includes`-folder is optional, it can be renamed or removed altogether. The idea behind this folder is to have one location for reusable chunks of markup. With [`<mj-include>`](https://mjml.io/documentation/#mj-include) MJML files can be included in layouts or other includes.
 
 ### Attachments
 
@@ -90,7 +90,7 @@ mailbox dev [layout]
 mailbox dev [layout] --test <test-data>
 ```
 
-The layout defaults to `default` (the `src/layouts/default.json` file). The Nunjucks context isn't populated with test data by default. You can specifiy test data with `--test default`.
+The layout defaults to `default` (the `src/layouts/default.mjml` file). The Nunjucks context isn't populated with test data by default. You can specifiy test data with `--test default`.
 
 
 ## Test
@@ -107,7 +107,9 @@ mailbox test [layout] --to <email-address> --from <email-address>
 mailbox test [layout] --to <email-address> --test <test-data>
 ```
 
-Both layout and test default to `default` (the `src/layouts/default.json` and `test/default.json` files). A recipient email address has to be specified with `--to info@example.com`, the sender email is optional and defaults to `test@example.com`. Test data other than default can be specified with `--test another-test`.
+Both layout and test default to `default` (the `src/layouts/default.mjml` and `test/default.json` files). A recipient email address has to be specified with `--to info@example.com`, the sender email is optional and defaults to `test@example.com`. Test data other than default can be specified with `--test another-test`.
+
+Note: For now, `sendmail` is required for the tests to work. In the future the Nodemailer transporter will be configurable. This will enable sending via SMTP.
 
 
 ## Build
@@ -121,4 +123,4 @@ mailbox build [layout]
 mailbox build [layout] --output <path>
 ```
 
-The layout defaults to `default` (the `src/layouts/default.json` file). The output path can be changed with `--output path/to/output.html`. The full filepath has to be specified.
+The layout defaults to `default` (the `src/layouts/default.mjml` file). The output path can be changed with `--output path/to/output.html`. The full filepath has to be specified.
