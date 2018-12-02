@@ -20,13 +20,19 @@ yarn global add @mvsde/mailbox
 ## New Project
 
 ```bash
+mailbox create
+
+# Optional sub-folder
 mailbox create [folder]
+cd folder
 
 # Optional name
-mailbox create [folder] --name <project-name>
+mailbox create --name <project-name>
 ```
 
 The folder defaults to the current directory (`.`) and the name to `mailbox-project`.
+
+If you created your project with the optional `folder` argument, don't forget to change to the new folder with `cd folder` before you continue.
 
 
 ## Configuration
@@ -84,10 +90,13 @@ The attachment is available as `{{ attachments.name }}` within the email templat
 You can start a development server with auto-reload using the following command:
 
 ```bash
+mailbox dev
+
+# Optional alternative layout
 mailbox dev [layout]
 
 # Optional test data
-mailbox dev [layout] --test <test-data>
+mailbox dev --test <test-data>
 ```
 
 The layout defaults to `default` (the `src/layouts/default.mjml` file). The Nunjucks context isn't populated with test data by default. You can specifiy test data with `--test default`.
@@ -98,13 +107,16 @@ The layout defaults to `default` (the `src/layouts/default.mjml` file). The Nunj
 To send a test email use the following command:
 
 ```bash
+mailbox test --to <email-address>
+
+# Optional alternative layout
 mailbox test [layout] --to <email-address>
 
 # Optional sender address
-mailbox test [layout] --to <email-address> --from <email-address>
+mailbox test --to <email-address> --from <email-address>
 
-# Optional different test data
-mailbox test [layout] --to <email-address> --test <test-data>
+# Optional alternative test data
+mailbox test --to <email-address> --test <test-data>
 ```
 
 Both layout and test default to `default` (the `src/layouts/default.mjml` and `test/default.json` files). A recipient email address has to be specified with `--to info@example.com`, the sender email is optional and defaults to `test@example.com`. Test data other than default can be specified with `--test another-test`.
@@ -117,10 +129,13 @@ Note: For now, `sendmail` is required for the tests to work. In the future the N
 To generate production ready files use this command:
 
 ```bash
+mailbox build
+
+# Optional alternative layout
 mailbox build [layout]
 
-# Optional different output location
-mailbox build [layout] --output <path>
+# Optional alternative output location
+mailbox build --output <path>
 ```
 
 The layout defaults to `default` (the `src/layouts/default.mjml` file). The output path can be changed with `--output path/to/output.html`. The full filepath has to be specified.
