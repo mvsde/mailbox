@@ -13,6 +13,7 @@ function build (options) {
   consola.info('Rendering MJML…')
 
   const render = renderMJML({ path: options.templatePath })
+  const attachmentPath = path.join(process.cwd(), 'src/attachments')
 
   if (render.errors.length) {
     consola.error(render.errors)
@@ -26,7 +27,10 @@ function build (options) {
   try {
     fs.ensureFileSync(options.outputPath)
     fs.writeFileSync(options.outputPath, render.html)
-    fs.copySync(path.join(process.cwd(), 'src/attachments'), path.dirname(options.outputPath))
+
+    if (fs.existsSync(attachmentPath)) {
+      fs.copySync(attachmentPath, path.dirname(options.outputPath))
+    }
   } catch (error) {
     consola.error(error.message)
     process.exit(1)
