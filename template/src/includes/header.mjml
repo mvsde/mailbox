@@ -3,7 +3,7 @@
 
     <mj-image
       align="left"
-      alt="Mail Box Logo"
+      alt="Mailbox Logo"
       height="48px"
       href="https://github.com/mvsde/mailbox"
       src="{{ attachments.logo }}"

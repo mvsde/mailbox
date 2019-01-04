@@ -1,4 +1,4 @@
-# Mail Box
+# Mailbox
 
 Small wrapper around MJML and Nodemailer for (awesome) HTML emails.
 
@@ -6,7 +6,7 @@ Small wrapper around MJML and Nodemailer for (awesome) HTML emails.
 ## Installation
 
 1. Install [Node.js](https://nodejs.org)
-2. Install Mail Box CLI:
+2. Install Mailbox CLI:
 
 ```bash
 # npm

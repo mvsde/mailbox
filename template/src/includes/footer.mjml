@@ -2,7 +2,7 @@
   <mj-column>
 
     <mj-text>
-      <h2>Mail Box</h2>
+      <h2>Mailbox</h2>
       <p>Small wrapper around MJML and Nodemailer for (awesome) HTML emails.</p>
     </mj-text>
 
