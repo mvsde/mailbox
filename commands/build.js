@@ -1,3 +1,4 @@
+const chalk = require('chalk')
 const consola = require('consola')
 const fs = require('fs-extra')
 const path = require('path')
@@ -36,7 +37,8 @@ function build (options) {
     process.exit(1)
   }
 
-  consola.success('HTML written and attachments copied.')
+  consola.success('HTML written and attachments copied.\n')
+  consola.info(chalk`Output to {blue ${path.join(process.cwd(), options.outputPath)}}`)
 }
 
 module.exports = build

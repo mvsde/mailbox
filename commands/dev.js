@@ -1,3 +1,4 @@
+const chalk = require('chalk')
 const chokidar = require('chokidar')
 const consola = require('consola')
 const express = require('express')
@@ -72,7 +73,7 @@ async function dev (options) {
 
   server.listen(serverPort)
 
-  consola.info(`Server running at http://localhost:${serverPort}`)
+  consola.info(chalk`Development server running at {blue http://localhost:${serverPort}}`)
 
   chokidar
     .watch(['src/**/*.mjml', 'data/*.json'], { ignoreInitial: true })
