@@ -21,7 +21,7 @@
     "nodemailer",
     "nunjucks"
   ],
-  "author": "Fynn Becker <info@fynn-becker.de>",
+  "author": "Fynn Becker <post@fynn.be>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mvsde/mailbox/issues"
