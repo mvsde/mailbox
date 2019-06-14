@@ -1,6 +1,20 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [0.4.0](https://github.com/mvsde/mailbox/compare/v0.3.4...v0.4.0) (2019-06-14)
+
+
+### chore
+
+* Update dependencies ([2e78a85](https://github.com/mvsde/mailbox/commit/2e78a85))
+
+
+### BREAKING CHANGES
+
+* Node.js v6 is no longer supported.
+
+
 
 ## [0.3.4](https://github.com/mvsde/mailbox/compare/v0.3.3...v0.3.4) (2019-04-26)
 
