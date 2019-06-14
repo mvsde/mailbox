@@ -3,36 +3,28 @@
 Small wrapper around MJML and Nodemailer for (awesome) HTML emails.
 
 
-## Installation
+## Requirements
 
-1. Install [Node.js](https://nodejs.org)
-2. Install Mailbox CLI:
-
-```bash
-# npm
-npm install -g @mvsde/mailbox
-
-# Yarn
-yarn global add @mvsde/mailbox
-```
+* Install [Node.js](https://nodejs.org)
 
 
 ## New Project
 
 ```bash
-mailbox create
+# In current folder
+npx @mvsde/mailbox create
 
-# Optional sub-folder
-mailbox create [folder]
+# In a sub-folder
+npx @mvsde/mailbox create [folder]
 cd folder
 
-# Optional name
-mailbox create --name <project-name>
+# With a different name
+npx @mvsde/mailbox create --name <project-name>
 ```
 
 The folder defaults to the current directory (`.`) and the name to `mailbox-project`.
 
-If you created your project with the optional `folder` argument, don't forget to change to the new folder with `cd folder` before you continue.
+If you created your project with the optional `folder` argument, don't forget to change to the new folder with `cd name-of-your-folder` before you continue.
 
 
 ## Configuration
@@ -90,13 +82,13 @@ The attachment is available as `{{ attachments.name }}` within the email templat
 You can start a development server with auto-reload using the following command:
 
 ```bash
-mailbox dev
+npm run dev
 
 # Optional alternative layout
-mailbox dev [layout]
+npm run dev [layout]
 
 # Optional email data
-mailbox dev --data <data-spec,...>
+npm run dev --data <data-spec,...>
 ```
 
 The layout defaults to `default` (the `src/layouts/default.mjml` file). The Nunjucks context isn't populated with data by default.
@@ -111,16 +103,16 @@ You can specifiy one or more data files with `--data file1,file2,...`. The list 
 To send a test email use the following command:
 
 ```bash
-mailbox test --to <email-address>
+npm run test --to <email-address>
 
 # Optional alternative layout
-mailbox test [layout] --to <email-address>
+npm run test [layout] --to <email-address>
 
 # Optional sender address
-mailbox test --to <email-address> --from <email-address>
+npm run test --to <email-address> --from <email-address>
 
 # Optional alternative email data
-mailbox test --to <email-address> --data <data-spec,...>
+npm run test --to <email-address> --data <data-spec,...>
 ```
 
 Both layout and data default to `default` (the `src/layouts/default.mjml` and `data/default.json` files). A recipient email address has to be specified with `--to info@example.com`, the sender email is optional and defaults to `test@example.com`.
@@ -137,13 +129,13 @@ Email data other than default can be specified with `--data file1,file2,...`. Th
 To generate production ready files use this command:
 
 ```bash
-mailbox build
+npm run build
 
 # Optional alternative layout
-mailbox build [layout]
+npm run build [layout]
 
 # Optional alternative output location
-mailbox build --output <path>
+npm run build --output <path>
 ```
 
 The layout defaults to `default` (the `src/layouts/default.mjml` file). The output path can be changed with `--output path/to/output.html`. The full filepath has to be specified.
