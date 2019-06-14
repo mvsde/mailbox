@@ -1,4 +1,7 @@
 module.exports = {
   root: true,
-  extends: 'standard'
+  extends: 'standard',
+  plugins: [
+    'unicorn'
+  ]
 }
