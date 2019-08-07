@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/mvsde/mailbox/compare/v0.4.1...v0.4.2) (2019-08-07)
+
+
+### Bug Fixes
+
+* Dependency security issues by updating them ([b7667bb](https://github.com/mvsde/mailbox/commit/b7667bb))
+
 ### [0.4.1](https://github.com/mvsde/mailbox/compare/v0.4.0...v0.4.1) (2019-07-05)
 
 
