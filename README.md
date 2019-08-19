@@ -129,6 +129,13 @@ npm run build -- [layout]
 
 # Optional alternative output location
 npm run build -- --output <path>
+
+# Optional email data
+npm run build -- --data <data-spec,...>
 ```
 
 The layout defaults to `default` (the `src/layouts/default.mjml` file). The output path can be changed with `--output path/to/output.html`. The full filepath has to be specified.
+
+You can specifiy one or more data files with `--data file1,file2,...`. The list will always be prepended with the default data file. The files will be merged from right into left.
+
+**NOTE:** You don't need to specify the full path for data files. The file name without extension is sufficient.

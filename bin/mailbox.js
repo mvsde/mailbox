@@ -29,6 +29,11 @@ const build = {
         default: 'default',
         type: 'string'
       })
+      .options('data', {
+        describe: 'Email data',
+        requiresArg: true,
+        type: 'string'
+      })
       .option('output', {
         alias: 'o',
         describe: 'Output path',
@@ -44,7 +49,8 @@ const build = {
 
     require('../commands/build')({
       templatePath,
-      outputPath
+      outputPath,
+      data: argv.data
     })
   }
 }
