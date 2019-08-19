@@ -29,7 +29,7 @@ function test (options) {
 
   const nunjucksAttachments = {}
 
-  for (let attachment in data.attachments) {
+  for (const attachment in data.attachments) {
     nunjucksAttachments[attachment] = `cid:${attachment}@example.com`
   }
 
