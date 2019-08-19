@@ -2,11 +2,9 @@
 
 Small wrapper around MJML and Nodemailer for (awesome) HTML emails.
 
-
 ## Requirements
 
 * Install [Node.js](https://nodejs.org)
-
 
 ## New Project
 
@@ -26,7 +24,6 @@ The folder defaults to the current directory (`.`) and the name to `mailbox-proj
 
 If you created your project with the optional `folder` argument, don't forget to change to the new folder with `cd name-of-your-folder` before you continue.
 
-
 ## Configuration
 
 Create the optional file `mjml.config.js` in the project root to customize MJML settings.
@@ -42,7 +39,6 @@ module.exports = {
 ```
 
 The MJML documentation provides a short [description for all available options](https://mjml.io/documentation/#inside-node-js).
-
 
 ## Project Setup
 
@@ -76,7 +72,6 @@ The special `attachments`-key in a data file will be transformed to allow static
 
 The attachment is available as `{{ attachments.name }}` within the email template. The value is the filename of the attachment relative to the `src/attachments` directory.
 
-
 ## Development
 
 You can start a development server with auto-reload using the following command:
@@ -85,10 +80,10 @@ You can start a development server with auto-reload using the following command:
 npm run dev
 
 # Optional alternative layout
-npm run dev [layout]
+npm run dev -- [layout]
 
 # Optional email data
-npm run dev --data <data-spec,...>
+npm run dev -- --data <data-spec,...>
 ```
 
 The layout defaults to `default` (the `src/layouts/default.mjml` file). The Nunjucks context isn't populated with data by default.
@@ -97,22 +92,21 @@ You can specifiy one or more data files with `--data file1,file2,...`. The list 
 
 **NOTE:** You don't need to specify the full path for data files. The file name without extension is sufficient.
 
-
 ## Test
 
 To send a test email use the following command:
 
 ```bash
-npm run test --to <email-address>
+npm run test -- --to <email-address>
 
 # Optional alternative layout
-npm run test [layout] --to <email-address>
+npm run test -- [layout] --to <email-address>
 
 # Optional sender address
-npm run test --to <email-address> --from <email-address>
+npm run test -- --to <email-address> --from <email-address>
 
 # Optional alternative email data
-npm run test --to <email-address> --data <data-spec,...>
+npm run test -- --to <email-address> --data <data-spec,...>
 ```
 
 Both layout and data default to `default` (the `src/layouts/default.mjml` and `data/default.json` files). A recipient email address has to be specified with `--to info@example.com`, the sender email is optional and defaults to `test@example.com`.
@@ -123,7 +117,6 @@ Email data other than default can be specified with `--data file1,file2,...`. Th
 
 **NOTE:** For now, `sendmail` is required for the tests to work. In the future the Nodemailer transporter will be configurable. This will enable sending via SMTP.
 
-
 ## Build
 
 To generate production ready files use this command:
@@ -132,10 +125,10 @@ To generate production ready files use this command:
 npm run build
 
 # Optional alternative layout
-npm run build [layout]
+npm run build -- [layout]
 
 # Optional alternative output location
-npm run build --output <path>
+npm run build -- --output <path>
 ```
 
 The layout defaults to `default` (the `src/layouts/default.mjml` file). The output path can be changed with `--output path/to/output.html`. The full filepath has to be specified.

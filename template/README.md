@@ -2,7 +2,6 @@
 
 The full documentation is available on [GitHub](https://github.com/mvsde/mailbox#readme).
 
-
 ## Installation
 
 1. Install [Node.js](https://nodejs.org)
@@ -16,7 +15,6 @@ npm install
 yarn install
 ```
 
-
 ## Development
 
 ```bash
@@ -26,7 +24,6 @@ npm run dev
 # Yarn
 yarn dev
 ```
-
 
 ## Production
 
@@ -38,7 +35,6 @@ npm run build
 yarn build
 ```
 
-
 ## Testing
 
 ```bash
@@ -48,7 +44,6 @@ npm run test -- --to info@example.com
 # Yarn
 yarn test --to info@example.com
 ```
-
 
 ## Help
 
