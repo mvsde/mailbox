@@ -30,24 +30,24 @@
   "bin": "bin/mailbox.js",
   "dependencies": {
     "chalk": "^2.4.2",
-    "chokidar": "^3.0.2",
+    "chokidar": "^3.1.0",
     "consola": "^2.10.1",
     "deepmerge": "^4.0.0",
     "fs-extra": "^8.1.0",
-    "mjml": "^4.4.1",
+    "mjml": "^4.5.0",
     "nodemailer": "^6.3.0",
     "nunjucks": "^3.2.0",
     "ws": "^7.1.2",
-    "yargs": "^14.0.0"
+    "yargs": "^14.1.0"
   },
   "devDependencies": {
-    "eslint": "^6.2.0",
-    "eslint-config-standard": "^13.0.1",
+    "eslint": "^6.4.0",
+    "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-unicorn": "^10.0.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-unicorn": "^11.0.0",
     "standard-version": "^7.0.0"
   }
 }
