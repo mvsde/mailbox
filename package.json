@@ -1,6 +1,6 @@
 {
   "name": "@mvsde/mailbox",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Small wrapper around MJML and Nodemailer for (awesome) HTML emails",
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --format codeframe \"**/*.js\"",
