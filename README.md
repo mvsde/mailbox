@@ -2,6 +2,8 @@
 
 Small wrapper around MJML and Nodemailer for (awesome) HTML emails.
 
+[![GitHub Actions status][actions-image]][actions-url]
+
 ## Requirements
 
 * Install [Node.js](https://nodejs.org)
@@ -139,3 +141,6 @@ The layout defaults to `default` (the `src/layouts/default.mjml` file). The outp
 You can specifiy one or more data files with `--data file1,file2,...`. The list will always be prepended with the default data file. The files will be merged from right into left.
 
 **NOTE:** You don't need to specify the full path for data files. The file name without extension is sufficient.
+
+[actions-image]: https://github.com/mvsde/mailbox/workflows/Lint%20and%20test/badge.svg
+[actions-url]: https://github.com/mvsde/mailbox/actions
