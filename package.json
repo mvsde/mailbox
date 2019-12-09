@@ -26,6 +26,9 @@
   "bugs": {
     "url": "https://github.com/mvsde/mailbox/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/mvsde/mailbox#readme",
   "bin": "bin/mailbox.js",
   "dependencies": {
