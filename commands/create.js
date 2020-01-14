@@ -13,7 +13,7 @@ const log = require('../lib/log')
  * @param {String} options.folder Create project in this folder
  * @param {String} options.name Project name
  */
-function create (options) {
+module.exports = function (options) {
   const inputPath = path.join(__dirname, '../template')
   const outputPath = path.join(process.cwd(), options.folder)
 
@@ -48,5 +48,3 @@ function create (options) {
   console.log(`  ${kleur.blue('cd')} "${outputPath}"`)
   console.log(`  ${kleur.blue('npm')} install`)
 }
-
-module.exports = create

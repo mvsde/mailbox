@@ -19,7 +19,7 @@ const renderNunjucks = require('../lib/render-nunjucks')
  * @param {String} options.templatePath Path of MJML template
  * @param {String} [options.data] Optional email data
  */
-async function dev (options) {
+module.exports = async function (options) {
   if (!options.templatePath) {
     throw new Error('options.templatePath is required')
   }
@@ -109,5 +109,3 @@ async function dev (options) {
       })
     })
 }
-
-module.exports = dev

@@ -15,7 +15,7 @@ const renderNunjucks = require('../lib/render-nunjucks')
  * @param {String} options.outputPath Path for HTML output
  * @param {String} [options.data] Optional email data
  */
-function build (options) {
+module.exports = function (options) {
   log.info('Rendering MJML…')
 
   const render = renderMJML({ path: options.templatePath })
@@ -56,5 +56,3 @@ function build (options) {
   const formattedOutputPath = path.join(process.cwd(), options.outputPath)
   log.info(`Output to ${kleur.blue(formattedOutputPath)}`)
 }
-
-module.exports = build

@@ -14,7 +14,7 @@ const sendMail = require('../lib/send-mail')
  * @param {String} options.from Email sender
  * @param {String} options.to Email recipient
  */
-function test (options) {
+module.exports = function (options) {
   log.info('Rendering MJML…')
 
   const data = getData({ data: options.data })
@@ -62,5 +62,3 @@ function test (options) {
     log.success(formatMailSuccess({ info }))
   })
 }
-
-module.exports = test
