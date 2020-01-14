@@ -1,8 +1,9 @@
 const chalk = require('chalk')
 const consola = require('consola')
-const fs = require('fs-extra')
+const fs = require('fs')
 const path = require('path')
 
+const copyDir = require('../lib/copy-dir')
 const getData = require('../lib/get-data')
 const renderMJML = require('../lib/render-mjml')
 const renderNunjucks = require('../lib/render-nunjucks')
@@ -40,11 +41,11 @@ function build (options) {
   consola.info('Writing HTML file and copying attachments…')
 
   try {
-    fs.ensureFileSync(options.outputPath)
+    fs.mkdirSync(path.dirname(options.outputPath), { recursive: true })
     fs.writeFileSync(options.outputPath, html)
 
     if (fs.existsSync(attachmentPath)) {
-      fs.copySync(attachmentPath, path.dirname(options.outputPath))
+      copyDir(attachmentPath, path.dirname(options.outputPath))
     }
   } catch (error) {
     consola.error(error.message)

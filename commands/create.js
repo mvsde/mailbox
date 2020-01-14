@@ -1,9 +1,11 @@
 const chalk = require('chalk')
 const consola = require('consola')
-const fs = require('fs-extra')
+const fs = require('fs')
+const path = require('path')
+
+const copyDir = require('../lib/copy-dir')
 const generateGitignore = require('../lib/generate-gitignore')
 const generatePackageJSON = require('../lib/generate-package-json')
-const path = require('path')
 
 /**
  * Create new project
@@ -18,7 +20,8 @@ function create (options) {
   consola.info('Copying template…')
 
   try {
-    fs.copySync(inputPath, outputPath)
+    fs.mkdirSync(outputPath, { recursive: true })
+    copyDir(inputPath, outputPath)
   } catch (error) {
     consola.error(error.message)
     process.exit(1)
