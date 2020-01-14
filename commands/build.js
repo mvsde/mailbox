@@ -1,5 +1,5 @@
+const { blue } = require('kleur')
 const fs = require('fs')
-const kleur = require('kleur')
 const path = require('path')
 
 const copyDir = require('../lib/copy-dir')
@@ -53,6 +53,5 @@ module.exports = function (options) {
   }
 
   log.success('HTML written and attachments copied.\n')
-  const formattedOutputPath = path.join(process.cwd(), options.outputPath)
-  log.info(`Output to ${kleur.blue(formattedOutputPath)}`)
+  log.info(`Output to ${blue(path.join(process.cwd(), options.outputPath))}`)
 }

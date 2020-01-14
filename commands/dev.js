@@ -1,7 +1,7 @@
+const { blue } = require('kleur')
 const chokidar = require('chokidar')
 const fs = require('fs')
 const http = require('http')
-const kleur = require('kleur')
 const WebSocket = require('ws')
 
 const generateWebSocketScript = require('../lib/generate-weboscket-script')
@@ -80,7 +80,7 @@ module.exports = async function (options) {
       return log.error(error)
     }
 
-    log.info(`Development server running at ${kleur.blue('http://localhost:' + serverPort)}`)
+    log.info(`Development server running at ${blue('http://localhost:' + serverPort)}`)
   })
 
   chokidar

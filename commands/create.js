@@ -1,5 +1,5 @@
+const { blue } = require('kleur')
 const fs = require('fs')
-const kleur = require('kleur')
 const path = require('path')
 
 const copyDir = require('../lib/copy-dir')
@@ -45,6 +45,6 @@ module.exports = function (options) {
   log.success('.gitignore and package.json generated.\n')
 
   console.log('Next steps:\n')
-  console.log(`  ${kleur.blue('cd')} "${outputPath}"`)
-  console.log(`  ${kleur.blue('npm')} install`)
+  console.log(`  ${blue('cd')} "${outputPath}"`)
+  console.log(`  ${blue('npm')} install`)
 }
