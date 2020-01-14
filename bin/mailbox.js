@@ -137,6 +137,20 @@ const test = {
         requiresArg: true,
         type: 'string'
       })
+      .option('smtp', {
+        describe: 'SMTP config',
+        requiresArg: true
+      })
+      .option('smtp.host', {
+        describe: 'SMTP host',
+        requiresArg: true,
+        type: 'string'
+      })
+      .option('smtp.port', {
+        describe: 'SMTP port',
+        requiresArg: true,
+        type: 'string'
+      })
   },
   handler (argv) {
     process.env.NODE_ENV = 'development'
@@ -147,7 +161,8 @@ const test = {
       templatePath,
       data: argv.data,
       from: argv.from,
-      to: argv.to
+      to: argv.to,
+      smtp: argv.smtp
     })
   }
 }

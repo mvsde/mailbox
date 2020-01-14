@@ -14,6 +14,7 @@ Small wrapper around MJML and Nodemailer for (awesome) HTML emails.
    4. [Data](#data)
 5. [Development server](#development-server)
 6. [Send test email](#send-test-email)
+   1. [SMTP](#smtp)
 7. [Build for production](#build-for-production)
 
 ## Requirements
@@ -146,6 +147,9 @@ npm run test -- --to <email-address> --from <email-address>
 npm run test -- --to <email-address> --data <data-spec,...>
 ```
 
+This uses the `sendmail` command of the operating system. See [SMTP](#smtp) on
+how to use a mail server.
+
 Both layout and data default to `default` (the `src/layouts/default.mjml` and
 `data/default.json` files). A recipient email address has to be specified with
 `--to info@example.com`, the sender email is optional and defaults to `test@example.com`.
@@ -157,7 +161,16 @@ The files will be merged from right into left.
 **NOTE:** You don't need to specify the full path for data files.
 The file name without extension is sufficient.
 
-**NOTE:** For now, `sendmail` is required for the test emails to work.
+### SMTP
+
+Sending via SMTP is optional and can be enabled with:
+
+```bash
+npm run test -- --to <email-address> --smtp.host <smtp-host> --smtp.port <smtp-port>
+```
+
+The username and password prompt may be skipped if the mail server allows seding
+without credentials.
 
 ## Build for production
 

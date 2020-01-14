@@ -13,6 +13,7 @@ const sendMail = require('../lib/send-mail')
  * @param {string} options.data Email data
  * @param {String} options.from Email sender
  * @param {String} options.to Email recipient
+ * @param {{host:string, port:string}} [options.smtp] SMTP address
  */
 module.exports = function (options) {
   log.info('Rendering MJML…')
@@ -52,7 +53,8 @@ module.exports = function (options) {
     to: options.to,
     subject: data.subject,
     html: nunjucksOutput,
-    attachments: mailAttachments
+    attachments: mailAttachments,
+    smtp: options.smtp
   }, (error, info) => {
     if (error) {
       log.error(error.message)
