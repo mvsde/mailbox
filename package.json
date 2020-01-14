@@ -3,7 +3,7 @@
   "version": "0.5.2",
   "description": "Small wrapper around MJML and Nodemailer for (awesome) HTML emails",
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore --format codeframe \"**/*.js\"",
+    "lint": "eslint --ignore-path .gitignore --format codeframe --cache \"**/*.js\"",
     "test:create": "node bin/mailbox create test/create",
     "test:dev": "cd template && node ../bin/mailbox dev",
     "test:build": "cd template && node ../bin/mailbox build",
