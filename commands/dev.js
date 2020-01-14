@@ -20,22 +20,6 @@ const renderNunjucks = require('../lib/render-nunjucks')
  * @param {String} [options.data] Optional email data
  */
 module.exports = async function (options) {
-  if (!options.templatePath) {
-    throw new Error('options.templatePath is required')
-  }
-
-  if (typeof options.templatePath !== 'string') {
-    throw new TypeError('options.templatePath must be of type string')
-  }
-
-  if (options.port && typeof options.port !== 'number') {
-    throw new TypeError('options.port must be of type number')
-  }
-
-  if (options.data && typeof options.data !== 'string') {
-    throw new TypeError('options.data must be of type string')
-  }
-
   const serverPort = await getPort(options.port || 3000)
   const socketPort = await getPort(serverPort + 1)
 
