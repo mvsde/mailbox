@@ -1,10 +1,10 @@
-const chalk = require('chalk')
-const consola = require('consola')
 const fs = require('fs')
+const kleur = require('kleur')
 const path = require('path')
 
 const copyDir = require('../lib/copy-dir')
 const getData = require('../lib/get-data')
+const log = require('../lib/log')
 const renderMJML = require('../lib/render-mjml')
 const renderNunjucks = require('../lib/render-nunjucks')
 
@@ -16,13 +16,13 @@ const renderNunjucks = require('../lib/render-nunjucks')
  * @param {String} [options.data] Optional email data
  */
 function build (options) {
-  consola.info('Rendering MJML…')
+  log.info('Rendering MJML…')
 
   const render = renderMJML({ path: options.templatePath })
   const attachmentPath = path.join(process.cwd(), 'src/attachments')
 
   if (render.errors.length) {
-    consola.error(render.errors)
+    log.error(render.errors)
     process.exit(1)
   }
 
@@ -36,9 +36,9 @@ function build (options) {
     })
   }
 
-  consola.success('MJML rendered.')
+  log.success('MJML rendered.\n')
 
-  consola.info('Writing HTML file and copying attachments…')
+  log.info('Writing HTML file and copying attachments…')
 
   try {
     fs.mkdirSync(path.dirname(options.outputPath), { recursive: true })
@@ -48,12 +48,13 @@ function build (options) {
       copyDir(attachmentPath, path.dirname(options.outputPath))
     }
   } catch (error) {
-    consola.error(error.message)
+    log.error(error.message)
     process.exit(1)
   }
 
-  consola.success('HTML written and attachments copied.\n')
-  consola.info(chalk`Output to {blue ${path.join(process.cwd(), options.outputPath)}}`)
+  log.success('HTML written and attachments copied.\n')
+  const formattedOutputPath = path.join(process.cwd(), options.outputPath)
+  log.info(`Output to ${kleur.blue(formattedOutputPath)}`)
 }
 
 module.exports = build

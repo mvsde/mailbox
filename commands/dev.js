@@ -1,15 +1,16 @@
-const chalk = require('chalk')
 const chokidar = require('chokidar')
-const consola = require('consola')
 const fs = require('fs')
+const http = require('http')
+const kleur = require('kleur')
+const WebSocket = require('ws')
+
 const generateWebSocketScript = require('../lib/generate-weboscket-script')
 const getData = require('../lib/get-data')
 const getPort = require('../lib/get-port')
-const http = require('http')
 const injectScript = require('../lib/inject-script')
+const log = require('../lib/log')
 const renderMJML = require('../lib/render-mjml')
 const renderNunjucks = require('../lib/render-nunjucks')
-const WebSocket = require('ws')
 
 /**
  * Start dev server with auto-reload
@@ -64,7 +65,7 @@ async function dev (options) {
     const mjmlOutput = renderMJML({ path: options.templatePath })
 
     if (mjmlOutput.errors.length) {
-      consola.error(mjmlOutput.errors)
+      log.error(mjmlOutput.errors)
       response.statusCode = 500
       response.end()
       return
@@ -92,10 +93,10 @@ async function dev (options) {
 
   server.listen(serverPort, error => {
     if (error) {
-      return consola.error(error)
+      return log.error(error)
     }
 
-    consola.info(chalk`Development server running at {blue http://localhost:${serverPort}}`)
+    log.info(`Development server running at ${kleur.blue('http://localhost:' + serverPort)}`)
   })
 
   chokidar
