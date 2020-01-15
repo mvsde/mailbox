@@ -23,7 +23,7 @@ npm run dev
 npm run build
 ```
 
-## Test email (requires sendmail)
+## Test email
 
 ```bash
 npm run test -- --to info@example.com
