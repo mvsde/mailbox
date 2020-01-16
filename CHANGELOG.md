@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.1](https://github.com/mvsde/mailbox/compare/v0.6.0...v0.6.1) (2020-01-16)
+
+
+### Bug Fixes
+
+* Make error reporting great again (Fix [#2](https://github.com/mvsde/mailbox/issues/2)) ([9c15f1a](https://github.com/mvsde/mailbox/commit/9c15f1aa2af4982e50e66906c6a7ad24df99c22b))
+* Remove `sendmail` requirement from readme ([aa43959](https://github.com/mvsde/mailbox/commit/aa43959aa609502f58e9a809f311f4319116f201))
+
 ## [0.6.0](https://github.com/mvsde/mailbox/compare/v0.5.3...v0.6.0) (2020-01-14)
 
 
