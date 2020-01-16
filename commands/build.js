@@ -3,6 +3,7 @@ const fs = require('fs')
 const path = require('path')
 
 const copyDir = require('../lib/copy-dir')
+const formatMJMLError = require('../lib/format-mjml-error')
 const getData = require('../lib/get-data')
 const log = require('../lib/log')
 const renderMJML = require('../lib/render-mjml')
@@ -22,7 +23,7 @@ module.exports = function (options) {
   const attachmentPath = path.join(process.cwd(), 'src/attachments')
 
   if (render.errors.length) {
-    log.error(render.errors)
+    log.error(formatMJMLError(render.errors))
     process.exit(1)
   }
 

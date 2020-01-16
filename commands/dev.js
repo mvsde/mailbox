@@ -4,6 +4,7 @@ const fs = require('fs')
 const http = require('http')
 const WebSocket = require('ws')
 
+const formatMJMLError = require('../lib/format-mjml-error')
 const generateWebSocketScript = require('../lib/generate-weboscket-script')
 const getData = require('../lib/get-data')
 const getPort = require('../lib/get-port')
@@ -49,7 +50,7 @@ module.exports = async function (options) {
     const mjmlOutput = renderMJML({ path: options.templatePath })
 
     if (mjmlOutput.errors.length) {
-      log.error(mjmlOutput.errors)
+      log.error(formatMJMLError(mjmlOutput.errors))
       response.statusCode = 500
       response.end()
       return
