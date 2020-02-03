@@ -10,8 +10,8 @@ const log = require('../lib/log')
 /**
  * Create new project
  * @param {Object} options Function options
- * @param {String} options.folder Create project in this folder
- * @param {String} options.name Project name
+ * @param {string} options.folder Create project in this folder
+ * @param {string} options.name Project name
  */
 module.exports = function (options) {
   const inputPath = path.join(__dirname, '../template')

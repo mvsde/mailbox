@@ -12,9 +12,9 @@ const renderNunjucks = require('../lib/render-nunjucks')
 /**
  * Build and write mail template
  * @param {Object} options Function options
- * @param {String} options.templatePath Path of MJML template
- * @param {String} options.outputPath Path for HTML output
- * @param {String} [options.data] Optional email data
+ * @param {string} options.templatePath Path of MJML template
+ * @param {string} options.outputPath Path for HTML output
+ * @param {string} [options.data] Optional email data
  */
 module.exports = function (options) {
   log.info('Rendering MJML…')

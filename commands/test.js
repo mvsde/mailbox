@@ -9,10 +9,10 @@ const sendMail = require('../lib/send-mail')
 /**
  * Send test email
  * @param {Object} options Function options
- * @param {String} options.templatePath Path of MJML template
+ * @param {string} options.templatePath Path of MJML template
  * @param {string} options.data Email data
- * @param {String} options.from Email sender
- * @param {String} options.to Email recipient
+ * @param {string} options.from Email sender
+ * @param {string} options.to Email recipient
  * @param {{host:string, port:string}} [options.smtp] SMTP address
  */
 module.exports = function (options) {
@@ -61,6 +61,6 @@ module.exports = function (options) {
       process.exit(1)
     }
 
-    log.success(formatMailSuccess({ info }))
+    log.success(formatMailSuccess(info))
   })
 }

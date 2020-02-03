@@ -16,9 +16,9 @@ const renderNunjucks = require('../lib/render-nunjucks')
 /**
  * Start dev server with auto-reload
  * @param {Object} options Function options
- * @param {Number} [options.port=3000] Server port
- * @param {String} options.templatePath Path of MJML template
- * @param {String} [options.data] Optional email data
+ * @param {number} [options.port=3000] Server port
+ * @param {string} options.templatePath Path of MJML template
+ * @param {string} [options.data] Optional email data
  */
 module.exports = async function (options) {
   const serverPort = await getPort(options.port || 3000)
