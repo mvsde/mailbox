@@ -1,4 +1,5 @@
 .eslintcache
+.nyc_output
 dist
 node_modules
 test/create

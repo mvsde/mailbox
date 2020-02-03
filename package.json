@@ -4,6 +4,7 @@
   "description": "Small wrapper around MJML and Nodemailer for (awesome) HTML emails",
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --format codeframe --cache \"**/*.js\"",
+    "test:unit": "nyc ava --verbose",
     "test:create": "node bin/mailbox create test/create",
     "test:dev": "cd template && node ../bin/mailbox dev",
     "test:build": "cd template && node ../bin/mailbox build",
@@ -43,6 +44,7 @@
     "ws": "^7.2.1"
   },
   "devDependencies": {
+    "ava": "^3.2.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.20.1",
@@ -50,6 +52,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-unicorn": "^16.0.0",
+    "nyc": "^15.0.0",
     "standard-version": "^7.1.0"
   }
 }
