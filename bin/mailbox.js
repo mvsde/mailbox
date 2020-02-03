@@ -1,179 +1,85 @@
 #!/usr/bin/env node
 
+const { red, yellow } = require('kleur')
+const { version } = require('../package.json')
+const program = require('commander')
+
 /**
  * Generate path to template
- * @param {String} layout Layout name
- * @returns {String} Path to template file
+ * @param {string} [layout='default'] Layout name
+ * @returns {string} Path to template file
  */
-function generateTemplatePath (layout) {
+function generateTemplatePath (layout = 'default') {
   return `src/layouts/${layout}.mjml`
 }
 
-/**
- * Generate path to output
- * @param {String} output Specific output path
- * @param {String} layout Layout name for fallback path
- * @returns {String} Path to output file
- */
-function generateOutputPath (output, layout) {
-  return output || `dist/${layout}.html`
-}
+program
+  .version(version)
+  .usage('<command> [options]')
+  .arguments('*')
+  .action(cmd => {
+    program.outputHelp()
+    console.log(red(`\nUnknown command <${yellow(cmd.args)}>.`))
+  })
 
-const build = {
-  command: 'build [layout]',
-  desc: 'Render MJML template',
-  builder (yargs) {
-    yargs
-      .positional('layout', {
-        describe: 'Email layout',
-        default: 'default',
-        type: 'string'
-      })
-      .options('data', {
-        describe: 'Email data',
-        requiresArg: true,
-        type: 'string'
-      })
-      .option('output', {
-        alias: 'o',
-        describe: 'Output path',
-        requiresArg: true,
-        type: 'string'
-      })
-  },
-  handler (argv) {
-    process.env.NODE_ENV = 'production'
-
-    const templatePath = generateTemplatePath(argv.layout)
-    const outputPath = generateOutputPath(argv.output, argv.layout)
-
-    require('../commands/build')({
-      templatePath,
-      outputPath,
-      data: argv.data
-    })
-  }
-}
-
-const create = {
-  command: 'create [folder]',
-  desc: 'Initialize a new project',
-  builder (yargs) {
-    yargs
-      .positional('folder', {
-        describe: 'Create project in this folder',
-        default: '.',
-        type: 'string'
-      })
-      .options('name', {
-        alias: 'n',
-        describe: 'Project name',
-        default: 'mailbox-project',
-        requiresArg: true,
-        type: 'string'
-      })
-  },
-  handler (argv) {
+program
+  .command('create [folder]')
+  .description('Intialize a new project')
+  .requiredOption('--name <project-name>', 'Package.json name field', 'mailbox-project')
+  .action((folder, options) => {
     require('../commands/create')({
-      folder: argv.folder,
-      name: argv.name
+      folder,
+      name: options.name
     })
-  }
-}
+  })
 
-const dev = {
-  command: 'dev [layout]',
-  desc: 'Start dev server with auto-reload',
-  builder (yargs) {
-    yargs
-      .positional('layout', {
-        describe: 'Email layout',
-        default: 'default',
-        type: 'string'
-      })
-      .options('data', {
-        describe: 'Email data',
-        requiresArg: true,
-        type: 'string'
-      })
-  },
-  handler (argv) {
-    process.env.NODE_ENV = 'development'
+program
+  .command('build [layout]')
+  .description('Render MJML template')
+  .option('--data <spec,…>', 'Email data')
+  .option('--output <path>', 'Output path')
+  .action((layout, options) => {
+    require('../commands/build')({
+      templatePath: generateTemplatePath(layout),
+      outputPath: options.output || 'dist/default.html',
+      data: options.data
+    })
+  })
 
-    const templatePath = generateTemplatePath(argv.layout)
-
+program
+  .command('dev [layout]')
+  .description('Start dev server with auto-reload')
+  .option('--data <spec,…>', 'Email data')
+  .action((layout, options) => {
     require('../commands/dev')({
-      templatePath,
-      data: argv.data
+      templatePath: generateTemplatePath(layout),
+      data: options.data
     })
-  }
-}
+  })
 
-const test = {
-  command: 'test [layout]',
-  desc: 'Send test email',
-  builder (yargs) {
-    yargs
-      .positional('layout', {
-        describe: 'Email layout',
-        default: 'default',
-        type: 'string'
-      })
-      .options('data', {
-        describe: 'Email data',
-        default: 'default',
-        requiresArg: true,
-        type: 'string'
-      })
-      .options('from', {
-        describe: 'Email sender',
-        default: 'test@example.com',
-        requiresArg: true,
-        type: 'string'
-      })
-      .option('to', {
-        describe: 'Email recipient',
-        demandOption: true,
-        requiresArg: true,
-        type: 'string'
-      })
-      .option('smtp', {
-        describe: 'SMTP config',
-        requiresArg: true
-      })
-      .option('smtp.host', {
-        describe: 'SMTP host',
-        requiresArg: true,
-        type: 'string'
-      })
-      .option('smtp.port', {
-        describe: 'SMTP port',
-        requiresArg: true,
-        type: 'string'
-      })
-  },
-  handler (argv) {
-    process.env.NODE_ENV = 'development'
-
-    const templatePath = generateTemplatePath(argv.layout)
-
+program
+  .command('test [layout]')
+  .description('Send test email')
+  .option('--data <spec,…>', 'Email data')
+  .option('--from <email>', 'Email sender')
+  .requiredOption('--to <email>', 'Email recipient')
+  .option('--smtp-host <hostname>', 'SMTP host config')
+  .option('--smtp-port <port>', 'SMTP port config')
+  .action((layout, options) => {
     require('../commands/test')({
-      templatePath,
-      data: argv.data,
-      from: argv.from,
-      to: argv.to,
-      smtp: argv.smtp
+      templatePath: generateTemplatePath(layout),
+      data: options.data,
+      from: options.from,
+      to: options.to,
+      smtp: {
+        host: options['smtp-host'],
+        port: options['smtp-port']
+      }
     })
-  }
-}
+  })
 
-require('yargs')
-  .command(create)
-  .command(dev)
-  .command(build)
-  .command(test)
-  .strict(true)
-  .demandCommand()
-  .recommendCommands()
-  .showHelpOnFail(true)
-  .parse()
+program.parse(process.argv)
+
+if (program.rawArgs.length < 3) {
+  program.help()
+}

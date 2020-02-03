@@ -33,14 +33,14 @@
   "bin": "bin/mailbox.js",
   "dependencies": {
     "chokidar": "^3.3.1",
+    "commander": "^4.1.1",
     "deepmerge": "^4.2.2",
     "kleur": "^3.0.3",
     "mjml": "^4.5.1",
     "nodemailer": "^6.4.2",
     "nunjucks": "^3.2.0",
     "prompts": "^2.3.0",
-    "ws": "^7.2.1",
-    "yargs": "^15.1.0"
+    "ws": "^7.2.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

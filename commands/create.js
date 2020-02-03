@@ -15,7 +15,7 @@ const log = require('../lib/log')
  */
 module.exports = function (options) {
   const inputPath = path.join(__dirname, '../template')
-  const outputPath = path.join(process.cwd(), options.folder)
+  const outputPath = path.join(process.cwd(), options.folder || '.')
 
   log.info('Copying template…')
 
