@@ -72,8 +72,8 @@ program
       from: options.from,
       to: options.to,
       smtp: {
-        host: options['smtp-host'],
-        port: options['smtp-port']
+        host: options.smtpHost,
+        port: options.smtpPort
       }
     })
   })
