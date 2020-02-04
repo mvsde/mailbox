@@ -18,7 +18,7 @@ const sendMail = require('../lib/send-mail')
 module.exports = function (options) {
   log.info('Rendering MJML…')
 
-  const data = getData({ data: options.data })
+  const data = getData(options.data)
   const mjmlOutput = renderMJML({ path: options.templatePath })
 
   if (mjmlOutput.errors.length) {

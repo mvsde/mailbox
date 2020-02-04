@@ -30,10 +30,9 @@ module.exports = function (options) {
   let html = render.html
 
   if (options.data) {
-    const data = getData({ data: options.data })
     html = renderNunjucks({
       template: html,
-      context: data
+      context: getData(options.data)
     })
   }
 

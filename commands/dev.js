@@ -65,10 +65,9 @@ module.exports = async function (options) {
       return response.end(injectOutput)
     }
 
-    const data = getData({ data: options.data })
     const nunjucksOutput = renderNunjucks({
       template: injectOutput,
-      context: data
+      context: getData(options.data)
     })
 
     response.end(nunjucksOutput)
