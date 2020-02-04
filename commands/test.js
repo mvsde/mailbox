@@ -42,10 +42,6 @@ module.exports = function (options) {
     }
   })
 
-  const mailAttachments = generateAttachments({
-    attachments: data.attachments
-  })
-
   log.info('Sending email…')
 
   sendMail({
@@ -53,7 +49,7 @@ module.exports = function (options) {
     to: options.to,
     subject: data.subject,
     html: nunjucksOutput,
-    attachments: mailAttachments,
+    attachments: generateAttachments(data.attachments),
     smtp: options.smtp
   }, (error, info) => {
     if (error) {
