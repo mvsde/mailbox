@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/mvsde/mailbox/compare/v0.6.1...v0.7.0) (2020-03-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* The custom `mjml.config.js` will no longer be used. Please use the `.mjmlconfig` instead.
+
+### Features
+
+* Use MJML's own config file ([5b4306a](https://github.com/mvsde/mailbox/commit/5b4306a884f16c19769b1ded8e0e0f12fde53d1e))
+
 ### [0.6.1](https://github.com/mvsde/mailbox/compare/v0.6.0...v0.6.1) (2020-01-16)
 
 

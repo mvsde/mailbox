@@ -1,6 +1,6 @@
 {
   "name": "@mvsde/mailbox",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Small wrapper around MJML and Nodemailer for (awesome) HTML emails",
   "scripts": {
     "lint": "npm run lint:js && npm run lint:language && npm run lint:markdown",
@@ -41,7 +41,9 @@
     }
   },
   "ava": {
-    "files": ["test/**/*.spec.js"]
+    "files": [
+      "test/**/*.spec.js"
+    ]
   },
   "nyc": {
     "all": true,
