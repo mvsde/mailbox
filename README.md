@@ -35,12 +35,9 @@ cd folder
 npx @mvsde/mailbox create --name <project-name>
 ```
 
-The folder defaults to the current directory (`.`)
-and the name to `mailbox-project`.
+The folder defaults to the current directory (`.`) and the name to `mailbox-project`.
 
-If you created your project with the optional `folder` argument,
-don't forget to change to the new folder with `cd name-of-your-folder`
-before you continue.
+If you created your project with the optional `folder` argument, don't forget to change to the new folder with `cd name-of-your-folder` before you continue.
 
 ## Configuration
 
@@ -72,36 +69,23 @@ The MJML documentation provides a short [description for the available options](
 
 ### Layouts
 
-The file `src/layouts/default.mjml` serves as a base layout for an HTML email.
-It uses [MJML (Mailjet Markup Language)](https://mjml.io/documentation/)
-for simpler email markup.
+The file `src/layouts/default.mjml` serves as a base layout for an HTML email. It uses [MJML (Mailjet Markup Language)](https://mjml.io/documentation/) for simpler email markup.
 
 ### Includes
 
-The `src/includes`-folder is optional, it can be renamed or removed altogether.
-The idea behind this folder is to have one location for reusable chunks of markup.
-With [`<mj-include>`](https://mjml.io/documentation/#mj-include) MJML files
-can be included in layouts or other includes.
+The `src/includes`-folder is optional, it can be renamed or removed altogether. The idea behind this folder is to have one location for reusable chunks of markup. With [`<mj-include>`](https://mjml.io/documentation/#mj-include) MJML files can be included in layouts or other includes.
 
 ### Attachments
 
-Files in the folder `src/attachments` can be referenced in a data specification.
-Nodemailer attaches these to the mail and provides a `cid` so images
-can be loaded from the attachments. The contents of the attachment folder
-will be copied as-is to the output during build time.
+Files in the folder `src/attachments` can be referenced in a data specification. Nodemailer attaches these to the mail and provides a `cid` so images can be loaded from the attachments. The contents of the attachment folder will be copied as-is to the output during build time.
 
 ### Data
 
-The `data` folder has to contain at least a `default.json` file
-which serves as the base data specification. You can create more JSON data files,
-but they always need a `default.json` to extend.
+The `data` folder has to contain at least a `default.json` file which serves as the base data specification. You can create more JSON data files, but they always need a `default.json` to extend.
 
-The data file content is passed to Nunjucks as a context.
-This allows the use of [Nunjucks templating features](https://mozilla.github.io/nunjucks/templating.html)
-to enhance the development and testing phase.
+The data file content is passed to Nunjucks as a context. This allows the use of [Nunjucks templating features](https://mozilla.github.io/nunjucks/templating.html) to enhance the development and testing phase.
 
-The special `attachments`-key in a data file will be transformed to allow
-static file linking during development and `cid`-attachment linking in test emails.
+The special `attachments`-key in a data file will be transformed to allow static file linking during development and `cid`-attachment linking in test emails.
 
 ```json
 {
@@ -111,8 +95,7 @@ static file linking during development and `cid`-attachment linking in test emai
 }
 ```
 
-The attachment is available as `{{ attachments.name }}` within the email template.
-The value is the filename of the attachment relative to the `src/attachments` directory.
+The attachment is available as `{{ attachments.name }}` within the email template. The value is the filename of the attachment relative to the `src/attachments` directory.
 
 ## Development server
 
@@ -128,15 +111,11 @@ npm run dev -- [layout]
 npm run dev -- --data <data-spec,...>
 ```
 
-The layout defaults to `default` (the `src/layouts/default.mjml` file).
-The Nunjucks context isn't populated with data by default.
+The layout defaults to `default` (the `src/layouts/default.mjml` file). The Nunjucks context isn't populated with data by default.
 
-You can specifiy one or more data files with `--data file1,file2,...`.
-The list will always be prepended with the default data file.
-The files will be merged from right into left.
+You can specifiy one or more data files with `--data file1,file2,...`. The list will always be prepended with the default data file. The files will be merged from right into left.
 
-**NOTE:** You don't need to specify the full path for data files.
-The file name without extension is sufficient.
+**NOTE:** You don't need to specify the full path for data files. The file name without extension is sufficient.
 
 ## Send test email
 
@@ -155,19 +134,13 @@ npm run test -- --to <email-address> --from <email-address>
 npm run test -- --to <email-address> --data <data-spec,...>
 ```
 
-This uses the `sendmail` command of the operating system. See [SMTP](#smtp) on
-how to use a mail server.
+This uses the `sendmail` command of the operating system. See [SMTP](#smtp) on how to use a mail server.
 
-Both layout and data default to `default` (the `src/layouts/default.mjml` and
-`data/default.json` files). A recipient email address has to be specified with
-`--to info@example.com`, the sender email is optional and defaults to `test@example.com`.
+Both layout and data default to `default` (the `src/layouts/default.mjml` and `data/default.json` files). A recipient email address has to be specified with `--to info@example.com`, the sender email is optional and defaults to `test@example.com`.
 
-Email data other than default can be specified with `--data file1,file2,...`.
-The list will always be prepended with the default data file.
-The files will be merged from right into left.
+Email data other than default can be specified with `--data file1,file2,...`. The list will always be prepended with the default data file. The files will be merged from right into left.
 
-**NOTE:** You don't need to specify the full path for data files.
-The file name without extension is sufficient.
+**NOTE:** You don't need to specify the full path for data files. The file name without extension is sufficient.
 
 ### SMTP
 
@@ -177,8 +150,7 @@ Sending via SMTP is optional and can be enabled with:
 npm run test -- --to <email-address> --smtp.host <smtp-host> --smtp.port <smtp-port>
 ```
 
-The username and password prompt may be skipped if the mail server allows seding
-without credentials.
+The username and password prompt may be skipped if the mail server allows seding without credentials.
 
 ## Build for production
 
@@ -197,13 +169,8 @@ npm run build -- --output <path>
 npm run build -- --data <data-spec,...>
 ```
 
-The layout defaults to `default` (the `src/layouts/default.mjml` file).
-The output path can be changed with `--output path/to/output.html`.
-The full filepath has to be specified.
+The layout defaults to `default` (the `src/layouts/default.mjml` file). The output path can be changed with `--output path/to/output.html`. The full filepath has to be specified.
 
-You can specifiy one or more data files with `--data file1,file2,...`.
-The list will always be prepended with the default data file.
-The files will be merged from right into left.
+You can specifiy one or more data files with `--data file1,file2,...`. The list will always be prepended with the default data file. The files will be merged from right into left.
 
-**NOTE:** You don't need to specify the full path for data files.
-The file name without extension is sufficient.
+**NOTE:** You don't need to specify the full path for data files. The file name without extension is sufficient.
