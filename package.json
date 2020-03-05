@@ -3,7 +3,11 @@
   "version": "0.6.1",
   "description": "Small wrapper around MJML and Nodemailer for (awesome) HTML emails",
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore --format codeframe --cache \"**/*.js\"",
+    "lint": "npm run lint:js && npm run lint:language && npm run lint:markdown",
+    "lint:js": "eslint --ignore-path .gitignore --format codeframe --cache \"**/*.js\"",
+    "lint:language": "alex .",
+    "lint:markdown": "markdownlint **/README.md",
+    "test": "npm run test:unit && npm run test:create && npm run test:build",
     "test:unit": "nyc ava --verbose",
     "test:create": "node bin/mailbox create test/create",
     "test:dev": "cd template && node ../bin/mailbox dev",
@@ -30,6 +34,28 @@
   "publishConfig": {
     "access": "public"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test"
+    }
+  },
+  "ava": {
+    "files": ["test/**/*.spec.js"]
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "lib/**"
+    ],
+    "reporter": [
+      "text",
+      "text-summary"
+    ]
+  },
+  "alex": {
+    "noBinary": true
+  },
   "homepage": "https://github.com/mvsde/mailbox#readme",
   "bin": "bin/mailbox.js",
   "dependencies": {
@@ -44,6 +70,7 @@
     "ws": "^7.2.1"
   },
   "devDependencies": {
+    "alex": "^8.1.1",
     "ava": "^3.5.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
@@ -52,6 +79,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-unicorn": "^16.1.1",
+    "husky": "^4.2.3",
+    "markdownlint-cli": "^0.22.0",
     "nyc": "^15.0.0",
     "standard-version": "^7.1.0"
   }

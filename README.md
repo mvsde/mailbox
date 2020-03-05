@@ -85,7 +85,7 @@ The `data` folder has to contain at least a `default.json` file which serves as 
 
 The data file content is passed to Nunjucks as a context. This allows the use of [Nunjucks templating features](https://mozilla.github.io/nunjucks/templating.html) to enhance the development and testing phase.
 
-The special `attachments`-key in a data file will be transformed to allow static file linking during development and `cid`-attachment linking in test emails.
+The `attachments`-key in a data file will be transformed to allow static file linking during development and `cid`-attachment linking in test emails.
 
 ```json
 {
