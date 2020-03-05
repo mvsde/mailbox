@@ -44,21 +44,29 @@ before you continue.
 
 ## Configuration
 
-Create the optional file `mjml.config.js` in the project root
-to customize MJML settings.
+Edit the optional `.mjmlconfig` in the project root to customize MJML settings:
 
-```js
-module.exports = {
-  fonts: { /* … */ },
-  keepComments: true,
-  beautify: false,
-  minify: false,
-  validationLevel: 'soft'
+```json
+{
+  "options": {
+    "fonts": {
+      "Font Name": "https://example.com/path/to/font/stylesheet.css"
+    },
+    "keepComments": true,
+    "beautify": false,
+    "minify": false,
+    "minifyOptions": {
+      "collapseWhitespace": true,
+      "minifyCSS": false,
+      "removeEmptyAttributes": true
+    },
+    "validationLevel": "strict"|"soft"|"skip"
+  },
+  "packages": []
 }
 ```
 
-The MJML documentation provides a short
-[description for all available options](https://mjml.io/documentation/#inside-node-js).
+The MJML documentation provides a short [description for the available options](https://mjml.io/documentation/#inside-node-js).
 
 ## Project setup
 
