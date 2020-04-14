@@ -14,6 +14,8 @@ function generateTemplatePath (layout = 'default') {
 }
 
 program
+  .storeOptionsAsProperties(false)
+  .passCommandToAction(false)
   .version(version)
   .usage('<command> [options]')
   .arguments('*')
