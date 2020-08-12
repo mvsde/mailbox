@@ -5,8 +5,8 @@
   "scripts": {
     "lint": "npm run lint:js && npm run lint:language && npm run lint:markdown",
     "lint:js": "eslint --ignore-path .gitignore --format codeframe --cache \"**/*.js\"",
-    "lint:language": "alex .",
-    "lint:markdown": "markdownlint **/README.md",
+    "lint:language": "alex README.md template/README.md",
+    "lint:markdown": "markdownlint README.md template/README.md",
     "test": "npm run test:unit && npm run test:create && npm run test:build",
     "test:unit": "nyc ava --verbose",
     "test:create": "node bin/mailbox create test/create",
@@ -31,7 +31,7 @@
     "email": "post@fynn.be",
     "url": "https://fynn.be"
   },
-  "license": "MIT",
+  "license": "Hippocratic-2.1",
   "bugs": {
     "url": "https://github.com/mvsde/mailbox/issues"
   },
