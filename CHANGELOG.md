@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/mvsde/mailbox/compare/v0.7.2...v0.8.0) (2020-08-12)
+
+
+### Features
+
+* Switch to The Hippocratic License ([efdb7fd](https://github.com/mvsde/mailbox/commit/efdb7fdcfd2e2696c0fbfd9e825b56cc3ffb7cd4))
+
 ### [0.7.2](https://github.com/mvsde/mailbox/compare/v0.7.1...v0.7.2) (2020-06-03)
 
 ### [0.7.1](https://github.com/mvsde/mailbox/compare/v0.7.0...v0.7.1) (2020-04-14)
