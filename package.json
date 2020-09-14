@@ -66,28 +66,28 @@
   "bin": "bin/mailbox.js",
   "dependencies": {
     "chokidar": "^3.4.2",
-    "commander": "^6.0.0",
+    "commander": "^6.1.0",
     "deepmerge": "^4.2.2",
-    "kleur": "^4.0.3",
-    "mjml": "^4.7.0-beta.1",
+    "kleur": "^4.1.1",
+    "mjml": "^4.7.0-beta.2",
     "nodemailer": "^6.4.11",
     "nunjucks": "^3.2.2",
     "prompts": "^2.3.2",
     "ws": "^7.3.1"
   },
   "devDependencies": {
-    "alex": "^8.2.0",
-    "ava": "^3.11.1",
-    "eslint": "^7.6.0",
+    "alex": "^9.0.1",
+    "ava": "^3.12.1",
+    "eslint": "^7.9.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-unicorn": "^21.0.0",
-    "husky": "^4.2.5",
+    "husky": "^4.3.0",
     "markdownlint-cli": "^0.23.2",
     "nyc": "^15.1.0",
-    "standard-version": "^8.0.2"
+    "standard-version": "^9.0.0"
   }
 }
