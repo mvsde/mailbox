@@ -49,14 +49,7 @@ Edit the optional `.mjmlconfig` in the project root to customize MJML settings:
     "fonts": {
       "Font Name": "https://example.com/path/to/font/stylesheet.css"
     },
-    "keepComments": true,
-    "beautify": false,
-    "minify": false,
-    "minifyOptions": {
-      "collapseWhitespace": true,
-      "minifyCSS": false,
-      "removeEmptyAttributes": true
-    },
+    "keepComments": true|false,
     "validationLevel": "strict"|"soft"|"skip"
   },
   "packages": []
