@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
+const { Command } = require('commander')
 const { red, yellow } = require('kleur')
 const { version } = require('../package.json')
-const program = require('commander')
 
 /**
  * Generate path to template
@@ -13,15 +13,18 @@ function generateTemplatePath (layout = 'default') {
   return `src/layouts/${layout}.mjml`
 }
 
+const program = new Command()
+
 program
-  .storeOptionsAsProperties(false)
-  .passCommandToAction(false)
   .version(version)
   .usage('<command> [options]')
   .arguments('*')
-  .action(cmd => {
+  .action((options, command) => {
     program.outputHelp()
-    console.log(red(`\nUnknown command <${yellow(cmd.args)}>.`))
+
+    if (command.args.length) {
+      console.log(red(`\nUnknown command <${yellow(command.args)}>.`))
+    }
   })
 
 program
@@ -81,7 +84,3 @@ program
   })
 
 program.parse(process.argv)
-
-if (program.rawArgs.length < 3) {
-  program.help()
-}
