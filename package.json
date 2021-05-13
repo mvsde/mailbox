@@ -8,7 +8,7 @@
     "lint:language": "alex README.md template/README.md",
     "lint:markdown": "markdownlint README.md template/README.md",
     "test": "npm run test:unit && npm run test:create && npm run test:build",
-    "test:unit": "nyc ava --verbose",
+    "test:unit": "c8 --all ava --verbose",
     "test:create": "node bin/mailbox create test/create",
     "test:dev": "cd template && node ../bin/mailbox dev",
     "test:build": "cd template && node ../bin/mailbox build",
@@ -28,7 +28,7 @@
   ],
   "author": {
     "name": "Fynn Becker",
-    "email": "fynn@hey.com",
+    "email": "post@fynn.be",
     "url": "https://fynn.be"
   },
   "homepage": "https://github.com/mvsde/mailbox#readme",
@@ -42,22 +42,22 @@
     "commander": "^7.2.0",
     "deepmerge": "^4.2.2",
     "kleur": "^4.1.4",
-    "mjml": "^4.9.0",
-    "nodemailer": "^6.5.0",
+    "mjml": "^4.9.3",
+    "nodemailer": "^6.6.0",
     "nunjucks": "^3.2.3",
     "prompts": "^2.4.1",
-    "ws": "^7.4.4"
+    "ws": "^7.4.5"
   },
   "devDependencies": {
     "alex": "^9.1.0",
     "ava": "^3.15.0",
-    "eslint": "^7.23.0",
+    "c8": "^7.7.2",
+    "eslint": "^7.26.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-promise": "^5.1.0",
     "markdownlint-cli": "^0.27.1",
-    "nyc": "^15.1.0",
-    "standard-version": "^9.2.0"
+    "standard-version": "^9.3.0"
   }
 }

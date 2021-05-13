@@ -1,4 +1,4 @@
-@mvsde/mailbox Copyright 2020 (Fynn Becker)(“Licensor”)
+@mvsde/mailbox Copyright 2021 Fynn Becker (“Licensor”)
 
 Hippocratic License Version Number: 2.1.
 
