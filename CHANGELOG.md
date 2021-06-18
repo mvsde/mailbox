@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/mvsde/mailbox/compare/v0.8.6...v0.9.0) (2021-06-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* MJML is no longer a direct dependency of Mailbox.
+
+Run `npm install mjml` once to add MJML as a dependency to your project. This enables updating MJML independent from new Mailbox versions.
+
+* Move MJML to peer dependencies ([5569308](https://github.com/mvsde/mailbox/commit/5569308568286c12976508edb1a17cf8adc72bf9))
+
 ### [0.8.6](https://github.com/mvsde/mailbox/compare/v0.8.5...v0.8.6) (2021-04-07)
 
 ### [0.8.5](https://github.com/mvsde/mailbox/compare/v0.8.4...v0.8.5) (2021-02-05)
