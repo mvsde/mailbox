@@ -4,28 +4,26 @@ const fs = require('fs')
 const http = require('http')
 const WebSocket = require('ws')
 
-const formatMJMLError = require('../lib/format-mjml-error')
-const generateWebSocketScript = require('../lib/generate-weboscket-script')
-const getData = require('../lib/get-data')
-const getPort = require('../lib/get-port')
-const injectScript = require('../lib/inject-script')
-const log = require('../lib/log')
-const renderMJML = require('../lib/render-mjml')
-const renderNunjucks = require('../lib/render-nunjucks')
+const formatMJMLError = require('../lib/format-mjml-error.js')
+const generateWebSocketScript = require('../lib/generate-weboscket-script.js')
+const getData = require('../lib/get-data.js')
+const getPort = require('../lib/get-port.js')
+const injectScript = require('../lib/inject-script.js')
+const log = require('../lib/log.js')
+const renderMJML = require('../lib/render-mjml.js')
+const renderNunjucks = require('../lib/render-nunjucks.js')
 
 /**
  * Start dev server with auto-reload
- * @param {Object} options Function options
+ * @param {Object} options
  * @param {number} [options.port=3000] Server port
  * @param {string} options.templatePath Path of MJML template
  * @param {string} [options.data] Optional email data
  */
-module.exports = async function (options) {
-  const serverPort = await getPort(options.port || 3000)
+module.exports = async function ({ port = 3000, templatePath, data }) {
+  const serverPort = await getPort(port)
   const socketPort = await getPort(serverPort + 1)
-
   const socket = new WebSocket.Server({ port: socketPort })
-
   const socketScript = generateWebSocketScript({ port: socketPort })
 
   const requestHandler = (request, response) => {
@@ -47,7 +45,7 @@ module.exports = async function (options) {
     }
 
     // Handle HTML request
-    const mjmlOutput = renderMJML({ path: options.templatePath })
+    const mjmlOutput = renderMJML({ filePath: templatePath })
 
     if (mjmlOutput.errors.length) {
       log.error(formatMJMLError(mjmlOutput.errors))
@@ -61,13 +59,14 @@ module.exports = async function (options) {
       script: socketScript
     })
 
-    if (!options.data) {
-      return response.end(injectOutput)
+    if (!data) {
+      response.end(injectOutput)
+      return
     }
 
     const nunjucksOutput = renderNunjucks({
       template: injectOutput,
-      context: getData(options.data)
+      context: getData(data)
     })
 
     response.end(nunjucksOutput)
@@ -77,7 +76,8 @@ module.exports = async function (options) {
 
   server.listen(serverPort, error => {
     if (error) {
-      return log.error(error)
+      log.error(error)
+      return
     }
 
     log.info(`Development server running at ${blue('http://localhost:' + serverPort)}`)

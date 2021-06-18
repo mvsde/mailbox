@@ -1,25 +1,25 @@
-const formatMailSuccess = require('../lib/format-mail-success')
-const generateAttachments = require('../lib/generate-attachments')
-const getData = require('../lib/get-data')
-const log = require('../lib/log')
-const renderMJML = require('../lib/render-mjml')
-const renderNunjucks = require('../lib/render-nunjucks')
-const sendMail = require('../lib/send-mail')
+const formatMailSuccess = require('../lib/format-mail-success.js')
+const generateAttachments = require('../lib/generate-attachments.js')
+const getData = require('../lib/get-data.js')
+const log = require('../lib/log.js')
+const renderMJML = require('../lib/render-mjml.js')
+const renderNunjucks = require('../lib/render-nunjucks.js')
+const sendMail = require('../lib/send-mail.js')
 
 /**
  * Send test email
- * @param {Object} options Function options
+ * @param {Object} options
  * @param {string} options.templatePath Path of MJML template
  * @param {string} options.data Email data
  * @param {string} options.from Email sender
  * @param {string} options.to Email recipient
  * @param {{host:string, port:string}} [options.smtp] SMTP address
  */
-module.exports = function (options) {
+module.exports = function ({ templatePath, data, from, to, smtp }) {
   log.info('Rendering MJML…')
 
-  const data = getData(options.data)
-  const mjmlOutput = renderMJML({ path: options.templatePath })
+  const dataSpec = getData(data)
+  const mjmlOutput = renderMJML({ filePath: templatePath })
 
   if (mjmlOutput.errors.length) {
     log.error(mjmlOutput.errors)
@@ -30,27 +30,24 @@ module.exports = function (options) {
 
   const nunjucksAttachments = {}
 
-  for (const attachment in data.attachments) {
+  for (const attachment in dataSpec.attachments) {
     nunjucksAttachments[attachment] = `cid:${attachment}@example.com`
   }
 
   const nunjucksOutput = renderNunjucks({
     template: mjmlOutput.html,
-    context: {
-      ...data,
-      attachments: nunjucksAttachments
-    }
+    context: { ...dataSpec, attachments: nunjucksAttachments }
   })
 
   log.info('Sending email…')
 
   sendMail({
-    from: options.from,
-    to: options.to,
-    subject: data.subject,
+    from,
+    to,
+    subject: dataSpec.subject,
     html: nunjucksOutput,
-    attachments: generateAttachments(data.attachments),
-    smtp: options.smtp
+    attachments: generateAttachments(dataSpec.attachments),
+    smtp
   }, (error, info) => {
     if (error) {
       log.error(error.message)

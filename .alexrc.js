@@ -1,1 +1,0 @@
-exports.noBinary = true

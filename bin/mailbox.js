@@ -31,10 +31,10 @@ program
   .command('create [folder]')
   .description('Intialize a new project')
   .requiredOption('--name <project-name>', 'Package.json name field', 'mailbox-project')
-  .action((folder, options) => {
+  .action((folder, { name }) => {
     require('../commands/create')({
       folder,
-      name: options.name
+      name
     })
   })
 
@@ -43,11 +43,11 @@ program
   .description('Render MJML template')
   .option('--data <spec,…>', 'Email data')
   .option('--output <path>', 'Output path')
-  .action((layout, options) => {
+  .action((layout, { output, data }) => {
     require('../commands/build')({
       templatePath: generateTemplatePath(layout),
-      outputPath: options.output || 'dist/default.html',
-      data: options.data
+      outputPath: output || 'dist/default.html',
+      data
     })
   })
 
@@ -55,10 +55,10 @@ program
   .command('dev [layout]')
   .description('Start dev server with auto-reload')
   .option('--data <spec,…>', 'Email data')
-  .action((layout, options) => {
+  .action((layout, { data }) => {
     require('../commands/dev')({
       templatePath: generateTemplatePath(layout),
-      data: options.data
+      data
     })
   })
 
@@ -70,15 +70,15 @@ program
   .requiredOption('--to <email>', 'Email recipient')
   .option('--smtp-host <hostname>', 'SMTP host config')
   .option('--smtp-port <port>', 'SMTP port config')
-  .action((layout, options) => {
+  .action((layout, { data, from, to, smtpHost, smtpPort }) => {
     require('../commands/test')({
       templatePath: generateTemplatePath(layout),
-      data: options.data,
-      from: options.from,
-      to: options.to,
+      data,
+      from,
+      to,
       smtp: {
-        host: options.smtpHost,
-        port: options.smtpPort
+        host: smtpHost,
+        port: smtpPort
       }
     })
   })

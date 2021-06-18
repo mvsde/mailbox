@@ -2,22 +2,22 @@ const { blue } = require('kleur')
 const fs = require('fs')
 const path = require('path')
 
-const copyDir = require('../lib/copy-dir')
-const generateGitignore = require('../lib/generate-gitignore')
-const generatePackageJSON = require('../lib/generate-package-json')
-const installDependencies = require('../lib/install-dependencies')
-const log = require('../lib/log')
+const copyDir = require('../lib/copy-dir.js')
+const generateGitignore = require('../lib/generate-gitignore.js')
+const generatePackageJSON = require('../lib/generate-package-json.js')
+const installDependencies = require('../lib/install-dependencies.js')
+const log = require('../lib/log.js')
 
 /**
  * Create new project
- * @param {Object} options Function options
+ * @param {Object} options
  * @param {string} options.folder Create project in this folder
  * @param {string} options.name Project name
  */
-module.exports = function (options) {
+module.exports = function ({ folder, name }) {
   const workingDirectory = process.cwd()
   const inputPath = path.join(__dirname, '../template')
-  const outputPath = path.join(workingDirectory, options.folder || '.')
+  const outputPath = path.join(workingDirectory, folder || '.')
 
   try {
     log.info('Copying template…')
@@ -35,7 +35,7 @@ module.exports = function (options) {
     log.info('Generating .gitignore and package.json…')
 
     const gitignore = generateGitignore()
-    const packageJSON = generatePackageJSON({ name: options.name })
+    const packageJSON = generatePackageJSON({ name })
 
     fs.writeFileSync(path.join(outputPath, '.gitignore'), gitignore)
     fs.writeFileSync(path.join(outputPath, 'package.json'), packageJSON)
