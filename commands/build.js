@@ -38,20 +38,21 @@ module.exports = function (options) {
 
   log.success('MJML rendered.\n')
 
-  log.info('Writing HTML file and copying attachments…')
-
   try {
+    log.info('Writing HTML and copying attachments…')
+
     fs.mkdirSync(path.dirname(options.outputPath), { recursive: true })
     fs.writeFileSync(options.outputPath, html)
 
     if (fs.existsSync(attachmentPath)) {
       copyDir(attachmentPath, path.dirname(options.outputPath))
     }
+
+    log.success('HTML written and attachments copied.\n')
   } catch (error) {
     log.error(error.message)
     process.exit(1)
   }
 
-  log.success('HTML written and attachments copied.\n')
-  log.info(`Output to ${blue(path.join(process.cwd(), options.outputPath))}`)
+  console.log(`Output to ${blue(path.join(process.cwd(), options.outputPath))}`)
 }
