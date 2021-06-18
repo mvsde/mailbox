@@ -1,7 +1,7 @@
 const test = require('ava')
 const generateGitignore = require('../../../lib/generate-gitignore.js')
 
-test('generates attachments', t => {
+test('generates .gitignore', t => {
   const result = generateGitignore()
 
   t.snapshot(result)

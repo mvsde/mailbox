@@ -1,7 +1,7 @@
 const test = require('ava')
 const generateWebSocketScript = require('../../../lib/generate-weboscket-script.js')
 
-test('generates attachments', t => {
+test('generates script', t => {
   const result = generateWebSocketScript({
     port: 1337
   })

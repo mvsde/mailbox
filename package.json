@@ -8,7 +8,7 @@
     "lint:language": "alex README.md template/README.md",
     "lint:markdown": "markdownlint README.md template/README.md",
     "test": "npm run test:unit && npm run test:create && npm run test:build",
-    "test:unit": "c8 --all ava --verbose",
+    "test:unit": "c8 --all --reporter text --reporter html ava --verbose",
     "test:create": "node bin/mailbox create test/create",
     "test:dev": "cd template && node ../bin/mailbox dev",
     "test:build": "cd template && node ../bin/mailbox build",
@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "alex": "^9.1.0",
-    "ava": "^3.15.0",
+    "ava": "^4.0.0-alpha.2",
     "c8": "^7.7.3",
     "eslint": "^7.28.0",
     "eslint-config-standard": "^16.0.3",
