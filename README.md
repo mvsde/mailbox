@@ -2,21 +2,6 @@
 
 Small wrapper around MJML and Nodemailer for (awesome) HTML emails.
 
-## Table of contents
-
-1. [Requirements](#requirements)
-2. [Start a new project](#start-a-new-project)
-3. [Configuration](#configuration)
-4. [Project setup](#project-setup)
-   1. [Layouts](#layouts)
-   2. [Includes](#includes)
-   3. [Attachments](#attachments)
-   4. [Data](#data)
-5. [Development server](#development-server)
-6. [Send test email](#send-test-email)
-   1. [SMTP](#smtp)
-7. [Build for production](#build-for-production)
-
 ## Requirements
 
 - [Node.js](https://nodejs.org)
@@ -167,3 +152,9 @@ The layout defaults to `default` (the `src/layouts/default.mjml` file). The outp
 You can specifiy one or more data files with `--data file1,file2,...`. The list will always be prepended with the default data file. The files will be merged from right into left.
 
 **NOTE:** You don't need to specify the full path for data files. The file name without extension is sufficient.
+
+## Sponsors
+
+<a href="https://factorial.io/" title="Factorial GmbH">
+  <img src="https://logo.factorial.io/sq/white-on-black.svg" width="100" height="100" alt="Factorial GmbH">
+</a>
