@@ -31,7 +31,7 @@
 		"url": "https://fynn.be"
 	},
 	"homepage": "https://github.com/mvsde/mailbox#readme",
-	"license": "Hippocratic-2.1",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/mvsde/mailbox/issues"
 	},
