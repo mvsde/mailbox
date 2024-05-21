@@ -38,6 +38,12 @@
 	"bin": {
 		"mailbox": "bin/mailbox.js"
 	},
+	"files": [
+		"bin",
+		"commands",
+		"lib",
+		"template"
+	],
 	"dependencies": {
 		"chokidar": "^3.6.0",
 		"commander": "^12.1.0",
