@@ -1,3 +1,7 @@
+# [0.10.0](https://github.com/mvsde/mailbox/compare/v0.9.0...v0.10.0) (2024-05-21)
+
+
+
 # [0.9.0](https://github.com/mvsde/mailbox/compare/v0.8.6...v0.9.0) (2021-06-18)
 
 

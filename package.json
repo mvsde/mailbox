@@ -1,6 +1,6 @@
 {
 	"name": "@mvsde/mailbox",
-	"version": "0.9.0",
+	"version": "0.10.0",
 	"description": "Small wrapper around MJML and Nodemailer for (awesome) HTML emails",
 	"scripts": {
 		"lint": "npm run lint:js",
