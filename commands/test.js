@@ -13,7 +13,7 @@ const sendMail = require("../lib/send-mail.js");
  * @param {string} options.data Email data
  * @param {string} options.from Email sender
  * @param {string} options.to Email recipient
- * @param {{host:string, port:string}} [options.smtp] SMTP address
+ * @param {{host?: string, port?: string}} options.smtp SMTP address
  */
 module.exports = function ({ templatePath, data, from, to, smtp }) {
 	log.info("Rendering MJML…");
@@ -46,6 +46,8 @@ module.exports = function ({ templatePath, data, from, to, smtp }) {
 			from,
 			to,
 			subject: dataSpec.subject,
+			/** @todo Strip tags from `nunjucksOutput` and use as text */
+			text: "",
 			html: nunjucksOutput,
 			attachments: generateAttachments(dataSpec.attachments),
 			smtp,
