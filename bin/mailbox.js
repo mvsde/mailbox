@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const { Command } = require("commander");
-const { red, yellow } = require("kleur");
 const { version } = require("../package.json");
 
 /**
