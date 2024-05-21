@@ -1,26 +1,20 @@
 name: Continuous Integration
-on: [push]
+on:
+  - push
 
 jobs:
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
-      - name: Install dependencies
-        run: npm ci
-      - name: Lint JS
-        run: npm run lint:js
-      - name: Lint language
-        run: npm run lint:language
-      - name: Lint markdown
-        run: npm run lint:markdown
+          node-version: 22
+      - run: npm ci
+      - run: node --run lint:js
+      - run: node --run lint:language
+      - run: node --run lint:markdown
 
   test:
     name: Test (Node.js ${{ matrix.node-version }} on ${{ matrix.os }})
@@ -28,19 +22,12 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        node-version: [12, 14, 16]
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: npm ci
-      - name: Unit test
-        run: npm run test:unit
-      - name: Create test
-        run: npm run test:create
-      - name: Build test
-        run: npm run test:build
+          node-version: 22
+      - run: npm ci
+      - run: node --run test:unit
+      - run: node --run test:create
+      - run: node --run test:build

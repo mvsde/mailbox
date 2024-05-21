@@ -19,7 +19,7 @@ Small wrapper around MJML and Nodemailer for (awesome) HTML emails.
 
 ## Requirements
 
-* [Node.js](https://nodejs.org)
+- [Node.js](https://nodejs.org)
 
 ## Start a new project
 

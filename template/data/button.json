@@ -1,6 +1,6 @@
 {
-  "button": {
-    "url": "https://github.com/mvsde/mailbox",
-    "text": "A fancy button"
-  }
+	"button": {
+		"url": "https://github.com/mvsde/mailbox",
+		"text": "A fancy button"
+	}
 }

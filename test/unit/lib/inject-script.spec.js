@@ -1,9 +1,9 @@
-const test = require('ava')
-const injectScript = require('../../../lib/inject-script.js')
+const test = require("ava");
+const injectScript = require("../../../lib/inject-script.js");
 
-test('injects script into HTML', t => {
-  const result = injectScript({
-    html: `
+test("injects script into HTML", (t) => {
+	const result = injectScript({
+		html: `
       <html>
         <head>
           <title>Hello World</title>
@@ -13,8 +13,8 @@ test('injects script into HTML', t => {
         </body>
       </html>
     `,
-    script: '<script>alert("Hello World")</script>'
-  })
+		script: '<script>alert("Hello World")</script>',
+	});
 
-  t.snapshot(result)
-})
+	t.snapshot(result);
+});

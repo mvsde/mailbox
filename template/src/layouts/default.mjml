@@ -1,48 +1,38 @@
 <mjml>
-  <mj-head>
+	<mj-head>
+		<mj-title>{{ subject }}</mj-title>
+		<mj-preview>{{ preview }}</mj-preview>
+	</mj-head>
+	<mj-body>
+		<mj-include path="../includes/header.mjml" />
 
-    <mj-title>{{ subject }}</mj-title>
-    <mj-preview>{{ preview }}</mj-preview>
+		<mj-section>
+			<mj-column>
+				<mj-text>
+					<h1>{{ title }}</h1>
+					{{ content }}
+				</mj-text>
+			</mj-column>
+		</mj-section>
 
-  </mj-head>
-  <mj-body>
+		<mj-raw>{% if button %}</mj-raw>
+		<mj-section>
+			<mj-column>
+				<mj-button href="{{ button.url }}">{{ button.text }}</mj-button>
+			</mj-column>
+		</mj-section>
+		<mj-raw>{% endif %}</mj-raw>
 
-    <mj-include path="../includes/header.mjml" />
+		<mj-raw>{% if footnote %}</mj-raw>
+		<mj-section>
+			<mj-column>
+				<mj-text>
+					<p>{{ footnote }}</p>
+				</mj-text>
+			</mj-column>
+		</mj-section>
+		<mj-raw>{% endif %}</mj-raw>
 
-    <mj-section>
-      <mj-column>
-
-        <mj-text>
-          <h1>{{ title }}</h1>
-          {{ content }}
-        </mj-text>
-
-      </mj-column>
-    </mj-section>
-
-    <mj-raw>{% if button %}</mj-raw>
-      <mj-section>
-        <mj-column>
-
-          <mj-button href="{{ button.url }}">{{ button.text }}</mj-button>
-
-        </mj-column>
-      </mj-section>
-    <mj-raw>{% endif %}</mj-raw>
-
-    <mj-raw>{% if footnote %}</mj-raw>
-      <mj-section>
-        <mj-column>
-
-          <mj-text>
-            <p>{{ footnote }}</p>
-          </mj-text>
-
-        </mj-column>
-      </mj-section>
-    <mj-raw>{% endif %}</mj-raw>
-
-    <mj-include path="../includes/footer.mjml" />
-
-  </mj-body>
+		<mj-include path="../includes/footer.mjml" />
+	</mj-body>
 </mjml>

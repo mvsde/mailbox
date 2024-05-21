@@ -1,8 +1,8 @@
-const test = require('ava')
-const generateGitignore = require('../../../lib/generate-gitignore.js')
+const test = require("ava");
+const generateGitignore = require("../../../lib/generate-gitignore.js");
 
-test('generates .gitignore', t => {
-  const result = generateGitignore()
+test("generates .gitignore", (t) => {
+	const result = generateGitignore();
 
-  t.snapshot(result)
-})
+	t.snapshot(result);
+});

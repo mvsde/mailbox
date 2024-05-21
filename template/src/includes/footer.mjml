@@ -1,18 +1,14 @@
 <mj-section>
-  <mj-column>
-
-    <mj-text>
-      <h2>Mailbox</h2>
-      <p>Small wrapper around MJML and Nodemailer for (awesome) HTML emails.</p>
-    </mj-text>
-
-  </mj-column>
-  <mj-column>
-
-    <mj-text>
-      <a href="https://github.com/mvsde/mailbox">GitHub</a><br>
-      <a href="https://www.npmjs.com/package/@mvsde/mailbox">npm</a>
-    </mj-text>
-
-  </mj-column>
+	<mj-column>
+		<mj-text>
+			<h2>Mailbox</h2>
+			<p>Small wrapper around MJML and Nodemailer for (awesome) HTML emails.</p>
+		</mj-text>
+	</mj-column>
+	<mj-column>
+		<mj-text>
+			<a href="https://github.com/mvsde/mailbox">GitHub</a><br />
+			<a href="https://www.npmjs.com/package/@mvsde/mailbox">npm</a>
+		</mj-text>
+	</mj-column>
 </mj-section>
