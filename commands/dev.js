@@ -85,13 +85,13 @@ module.exports = async function ({ port = 3000, templatePath, data }) {
 		);
 	});
 
-	chokidar
-		.watch(["src/**/*.mjml", "data/*.json"], { ignoreInitial: true })
-		.on("all", () => {
-			socket.clients.forEach((client) => {
-				if (client.readyState === WebSocket.OPEN) {
-					client.send("window-reload");
-				}
-			});
-		});
+	const watcher = chokidar.watch(["./src", "./data"], { ignoreInitial: true });
+
+	watcher.on("all", () => {
+		for (const client of socket.clients) {
+			if (client.readyState === WebSocket.OPEN) {
+				client.send("window-reload");
+			}
+		}
+	});
 };
