@@ -1,3 +1,12 @@
+## [0.10.2](https://github.com/mvsde/mailbox/compare/v0.10.1...v0.10.2) (2024-12-18)
+
+
+### Bug Fixes
+
+* **test:** Allow empty `attachments` in mock data (close [#23](https://github.com/mvsde/mailbox/issues/23)) ([4761e68](https://github.com/mvsde/mailbox/commit/4761e68b11f0b154f0b8479cc97b14febb0f0799))
+
+
+
 ## [0.10.1](https://github.com/mvsde/mailbox/compare/v0.10.0...v0.10.1) (2024-05-22)
 
 
