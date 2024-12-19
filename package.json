@@ -13,7 +13,8 @@
 		"test:build": "cd template && node ../bin/mailbox build",
 		"test:test": "cd template && node ../bin/mailbox test",
 		"format": "prettier --write .",
-		"version": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file && git add CHANGELOG.md"
+		"version": "conventional-changelog --preset angular --infile CHANGELOG.md --same-file && git add CHANGELOG.md",
+		"prepack": "rm --recursive template/dist"
 	},
 	"repository": {
 		"type": "git",
