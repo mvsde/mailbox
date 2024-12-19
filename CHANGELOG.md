@@ -1,3 +1,12 @@
+## [0.10.3](https://github.com/mvsde/mailbox/compare/v0.10.2...v0.10.3) (2024-12-19)
+
+
+### Bug Fixes
+
+* Remove `dist` from template on publish ([1daa6f0](https://github.com/mvsde/mailbox/commit/1daa6f03f630dd7d5318b071f76396b9b10d63d6))
+
+
+
 ## [0.10.2](https://github.com/mvsde/mailbox/compare/v0.10.1...v0.10.2) (2024-12-18)
 
 
